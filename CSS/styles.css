@@ -1,5 +1,6 @@
-/* Fonts */
-
+/*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  ┃                 Typography                ┃
+  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 h1,
 h2 {
     font-family: "Nunito", sans-serif;
@@ -47,9 +48,10 @@ h2 {
     letter-spacing: +0.5px;
     line-height: 24px;
 }
-/* Fonts end */
 
-/* Variables */
+/*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  ┃                Variables                  ┃
+  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 :root {
     /* Colors */
     --primary: #222831;
@@ -80,8 +82,27 @@ header{
 /* Hero section with carousel */
 .hero-carousel{
    border: solid white 1px;
-   height: 500px;
+   margin-bottom: 80px;
+   display: flex;
+    justify-content: center;
+    height: 500px;
 }
+
+.hero-carousel-slide {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-carousel-slide img {
+    width: 100%;
+    height: 100%; /* Set height to 100% to ensure it fills the container */
+    object-fit:cover; /* Scale the image to cover the entire container while preserving aspect ratio */
+    object-position: center; /* Center the image within the container */
+}
+
+
 
 body {
     background-color: var(--primary);
@@ -89,20 +110,49 @@ body {
 }
 
 .grid-section{
+    margin: 0 auto;
+    transition: ease all .5s;
+    display: flex;
+    justify-content: center;
+    max-width: 65rem;
+}
+
+.grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 20px 1fr 20px;
-    gap: 20px;
-    padding: 20px;
-    margin-left: 200px;
-    margin-right: 200px;
+    grid-template-areas: 
+      "grid1 grid3"
+      "grid2 grid3"
+      "grid4 grid4";
+    gap: 10px; 
+    border: solid white 1px;
+  }
+  
+  .grid-item1 { grid-area: grid1; }
+  .grid-item2 { grid-area: grid2; }
+  .grid-item3 { grid-area: grid3; }
+  .grid-item4 { grid-area: grid4; }
+  
+  .display-flex{
+    display: flex;
+  }
+
+.grid-container  img {
+    width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      border-radius: 4px;
+      border: 1px solid white;
 }
 
 
+/*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  ┃             Media Queries                 ┃
+  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 
-
-/* media queries */
-@media (max-width: 1100px) {
+/*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  ┃   CSS Rules for Tablets   ┃
+  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
+@media (max-width: 1400px) {
     h1 {
         font-size: 45px;
         letter-spacing: 0px;
