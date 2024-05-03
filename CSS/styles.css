@@ -11,7 +11,7 @@
 main{
   margin-top: 20px;
   margin: 0 auto;
-  max-width: 90rem;
+  max-width: 70rem;
   padding-left: 20px;
   padding-right: 20px;
   
@@ -110,10 +110,17 @@ header{
 
 }   
 
-.logo-container{
-    display: flex;
-    align-items: center;
+.logo-container {
+  display: flex;
+  align-items: center;
+
 }
+
+.logo-container img {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃          Hero section/Carousel            ┃
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
@@ -125,34 +132,26 @@ header{
     border-radius: 4px;
     border: solid white 1px;
     margin-bottom: 30px;
-    max-height: 600px;
+    max-height: 700px;
+
   }
-
-
-
-  /* Title text on the hero carousel */
-  .hero-carousel h2 {
-    font-family: "Titillium Web", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 36px;
-    letter-spacing: 0px;
-    line-height: 28px;
-    margin: 0;
-    color: #61dafb;
-    max-width: 800px;
+  
+  .carouselImg {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
   }
-
+  
   .carousel-container {
     display: flex;
     transition: transform 0.5s ease;
   }
-
+  
   .carousel-item {
     flex: 0 0 100%;
+    position: relative;
   }
-
-  /* Carousel description text */
+  
   .carousel-text {
     position: absolute;
     bottom: 50px;
@@ -160,19 +159,7 @@ header{
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
-
-
-
-  .hero-carousel p {
-    font-family: "Titillium Web", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 16px;
-    letter-spacing: +0.5px;
-    line-height: 24px;
-    margin: 5px 0 0;
-  }
-
+  
   .carousel-nav {
     position: absolute;
     top: 50%;
@@ -181,7 +168,7 @@ header{
     right: 0;
     text-align: center;
   }
-
+  
   .carousel-nav button {
     background-color: rgba(255, 255, 255, 0.5);
     border: none;
@@ -190,15 +177,11 @@ header{
     padding: 10px 20px;
     margin: 0 10px;
     border-radius: 5px;
-    border-radius: 4px;
-      border-color: rgb(0, 0, 0);
-      border-style: outset;
   }
   
   .carousel-nav button:hover {
     background-color: rgba(255, 255, 255, 0.7);
   }
-
 
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃          Grid section/Blog feed           ┃
@@ -209,24 +192,18 @@ header{
     transition: ease all .5s;
     display: flex;
     justify-content: center;
-    max-width: 1000rem;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-areas: 
-      "grid1 grid3"
-      "grid1 grid3"
-      "grid2 grid3"
-      "grid2 grid3";
-    gap: 10px; 
-    margin-bottom: 10px;
-    padding: 20px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  margin: 0 auto;
+  max-width: 70rem;
+  margin-bottom: 50px;
   }
   
-  .grid-item1 { grid-area: grid1; height: 300px;}
-  .grid-item2 { grid-area: grid2; height: 300px; }
-  .grid-item3 { grid-area: grid3; ;}
+
 
   .grid-item3:hover {
     transition: ease all .5s;
@@ -238,8 +215,7 @@ header{
   .grid-section img{
     border-radius: 4px;
     border: 1px solid white;
-    width: 100%;
-    height: 100%;
+    object-fit: cover;
   }
 
 
@@ -400,6 +376,243 @@ header{
     margin-top: 5px;
     font-size: 14px;
   }
+
+
+/*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  ┃               Register section            ┃
+  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
+
+  .register-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+}
+
+.register-container h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label-text {
+    margin-top: 10px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.back-to-dashboard {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#profile-picture-preview{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  ┃            Dashboard section              ┃
+  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
+
+  .dashboard-container {
+    background-color: #393e46;
+    color: black;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .dashboard-greeting {
+    margin: 0 auto;
+    padding: 20px; /* Add padding for better spacing */
+    text-align: center; /* Center text horizontally */
+  }
+  
+  .dashboard-greeting h2 {
+    color: #61dafb;
+    margin-bottom: 10px; /* Add margin to separate h2 and p */
+  }
+  
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .profile-picture img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .profile-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .profile-info h2 {
+    color: #61dafb;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .dashboard-features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px; /* Add padding for consistent spacing */
+  }
+  
+  .feature {
+    margin: 0 10px; /* Add margin for spacing between features */
+  }
+  
+  .feature-btn {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Add margin for spacing between buttons */
+    width: 200px;
+  }
+  
+  .feature-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  .logout-btn {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+    border-radius: 4px;
+  }
+
+  .login-btn {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+    border-radius: 4px;
+  }
+  
+  .dashboard-features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+  }
+  
+  .dashboard-latest-blog-posts {
+    margin-top: 20px;
+  }
+  
+  .articles-dashboard {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .blog-post {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 50px;
+  }
+  
+  .edit-btn:hover,
+  .delete-btn:hover {
+    background-color: #0056b3;
+  }
+  
+
+
+
+
 
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃                Footer                     ┃
