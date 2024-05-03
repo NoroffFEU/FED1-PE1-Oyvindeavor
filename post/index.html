@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotview Labs create a new blog post</title>
+  <link rel="stylesheet" href="../CSS/normalize.css" />
+  <!--Resets-->
+  <link rel="stylesheet" href="../CSS/styles.css" />
+  <!--Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <!-- <script type="module" src="js/main.mjs"></script> -->
+  <!-- JS -->
+</head>
+
+<body>
+  <!--Header-->
+  <header>
+    <div class="header-container">
+      <!--Logo-->
+      <div class="logo-container">
+        <img src="" alt="Hotview Labs Logo" />
+        <h2>Hotview Labs</h2>
+      </div>
+      <div class="account">
+        <div class="profile-info">
+        <a class="login-btn" href="/account/login.html">Login</a>
+      </div>
+      </div>
+  </header>
+  <main>
+
+      <!-- Back to Dashboard section -->
+      <section class="back-to-dashboard">
+        <a href="../dashboard/index.html">Back to Dashboard</a>
+    </section>
+
+    <section class="create-blog-post">
+        <h2>Create a new blog post</h2>
+        <form class="flex direction-column align-center" action="create-post.php" method="POST" enctype="multipart/form-data">
+            <label class="label-text" for="title">Title</label>
+            <input type="text" id="title" name="title" required />
+            <label class="label-text" for="content">Content</label>
+            <textarea id="content" name="content" rows="4" required></textarea>
+            <label class="label-text" for="image">Image URL</label>
+            <input type="url" id="image" name="image" required />
+            <button type="submit">Create Post</button>
+        </form>
+
+    </section>
+   
+   
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-item">
+        <h3>Hotview Labs</h3>
+        <p>Hotview Labs is a blog that provides information on the latest technology trends and
+          innovations.</p>
+      </div>
+      <div class="logo-container">
+        <img src="" alt="Hotview Labs Logo" />
+  </footer>
+</body>
+
+</html>
