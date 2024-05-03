@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet" />
-    <!--- <script type="module" src="/js/loginForm.js"></script> -->
+    <script type="module" src="/js/dashboard.mjs"></script>
     <!-- JS -->
 </head>
 
@@ -22,36 +22,89 @@
     <!--Header-->
     <header>
         <div class="header-container">
-            <a href="/index.html">Home placeholder</a>
-            <!--Logo-->
-            <div class="logo-container">
-                <img src="" alt="Hotview Labs Logo" />
+            <!-- Logo -->
+            <a href="/index.html" class="logo-container">
+                <img src="path/to/your/image.png" alt="Hotview Labs Logo" />
                 <h2>Hotview Labs</h2>
-            </div>
+            </a>
+            <!--Logout button-->
             <div class="account">
-                <button class="login-btn">Logout</button>
+                <div class="profile-info">
+                    <img src="https://images.unsplash.com/photo-1483104879057-379b6c2fe5a2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
+                        alt="Profile Picture" />
+                    <button class="logout-btn">Logout</button>
+                </div>
             </div>
     </header>
+    <!-- Header End -->
     <main>
-        <!-- Dashboard section -->
         <section class="dashboard-container">
-            <h2 class="flex justify-center">Dashboard</h2>
-            <div class="dashboard-item">
-                <h3>Posts</h3>
-                <p>View and manage your posts</p>
-                <button>View Posts</button>
+            <div class="dashboard-greeting">
+                <div class="profile-picture">
+                    <img src="https://images.unsplash.com/photo-1483104879057-379b6c2fe5a2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
+                        alt="Profile Picture" />
+                </div>
+                <h2 class="userName">Welcome back Øyvind</h2>
+               
+                <h3>What do you wanna do today?</h3>
             </div>
-            <div class="dashboard-item">
-                <h3>Comments</h3>
-                <p>View and manage comments</p>
-                <button>View Comments</button>
+            <div class="dashboard-features">
+                <div class="feature">
+                    <a href="../post/index.html" class="feature-btn" id="createNewPostBtn">Create a new
+                        post <span>Icon</span></a>
+                    <a href="../account/register.html" class="feature-btn">Create a new account
+                        <span>Icon</span></a>
+                </div>
             </div>
-            <div class="dashboard-item">
-                <h3>Profile</h3>
-                <p>View and manage your profile</p>
-                <button>View Profile</button>
+        </section>
+        <!-- Latest Blog Posts -->
+        <section class="dashboard-latest-blog-posts">
+            <h2>Latest Blog Posts</h2>
+            <div class="articles-dashboard">
+                <div class="blog-post">
+                    <h3>Post Title</h3>
+                    <p>Post Content</p>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+                <div class="blog-post">
+                    <h3>Post Title</h3>
+                    <p>Post Content</p>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+                <div class="blog-post">
+                    <h3>Post Title</h3>
+                    <p>Post Content</p>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
             </div>
-            <!--Dashboard section END -->
+        </section>
+        <!-- Latest blog posts END -->
+        <section class="all-blog-posts">
+            <h2>All Blog Posts</h2>
+            <div class="articles-dashboard">
+                <div class="blog-post">
+                    <h3>Post Title</h3>
+                    <p>Post Content</p>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+                <div class="blog-post">
+                    <h3>Post Title</h3>
+                    <p>Post Content</p>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+                <div class="blog-post">
+                    <h3>Post Title</h3>
+                    <p>Post Content</p>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="footer-container">
