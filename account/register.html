@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet" />
-    <script type="module" src="/js/main.mjs"></script>
+    <script type="module" src="../js/registerForm.mjs"></script> 
     <!-- JS -->
 </head>
 
@@ -30,29 +30,41 @@
             </div>
             <div class="account">
                 <button class="login-btn">Login</button>
-                <button class="signup-btn">Sign Up</button>
+              
             </div>
-            
     </header>
     <main>
-        <!-- Login section -->
-        <section class="login-container">
-            <h2 class="flex justify-center">Register</h2>
-            <!-- login Form -->
-            <form class="flex direction-column align-center" action="login.php" method="POST">
+        <!-- Back to Dashboard section -->
+        <section class="back-to-dashboard">
+            <a href="/dashboard/index.html">Back to Dashboard</a>
+        </section>
+        <!-- Register section  -->
+        <section class="register-container">
+            <h2 class="flex justify-center">Register new account</h2>
+            <!-- Registration Form -->
+            <form class="flex direction-column align-center" action="register.php" method="POST" enctype="multipart/form-data">
+                <!-- Bio -->
+                <label class="label-text" for="bio">Bio (optional)</label>
+                <textarea id="bio" name="bio" rows="4" maxlength="160"></textarea>
+                <!-- Profile Picture -->
+                <label class="label-text" for="profile-picture">Profile Picture URL (optional)</label>
+                <img id="profile-picture-preview" src="" alt="Profile Picture" />
+                <input type="url" id="profile-picture" name="profile-picture">
+                <!-- Name -->
+                <label class="label-text" for="username">Name</label>
+                <input type="text" id="username" name="username" required />
+                <!-- Email -->
                 <label class="label-text" for="email">Email</label>
                 <input type="email" id="email" name="email" required />
-                <label class="label-text" for="username">Name</label>
-                <input type="name" id="username" name="username" required />
+                <!-- Password -->
                 <label class="label-text" for="password">Password</label>
-                <input type="password" id="password" name="password" required />
-                <button type="submit">Login</button>
+                <input type="password" id="password" name="password" required/>
+                <!-- Register Button -->
+                <button type="submit" id="registerbutton">Register</button>
             </form>
-            <!--Dont have an account -->
-            <div class="signup-link flex justify-center">
-                <p>Already have an account? <a href="/account/login.html">Login</a></p>
-            </div>
         </section>
+        
+        
     </main>
     <footer>
         <div class="footer-container">
