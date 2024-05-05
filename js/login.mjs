@@ -1,5 +1,6 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { emailInput, passwordInput } from "./loginForm.mjs";
+import { storeUserName } from "./utils/storeUserName.mjs";
 
 async function login() {
   try {
@@ -39,7 +40,6 @@ async function login() {
   }
 }
 
-export { storeUserName };
 export { login };
 
 // This function stores the access token in the session storage
@@ -49,12 +49,6 @@ function storeAccessToken(response) {
   console.log("Logged in successfully", response.data);
 }
 
-function storeUserName(response) {
-  const userName = response.data.name;
-  sessionStorage.setItem("userName", userName);
-  console.log("Name:", response.data.name);
-}
-
 function storeBio(response) {
   const bio = response.data.bio;
   sessionStorage.setItem("bio", bio);
@@ -62,7 +56,7 @@ function storeBio(response) {
 }
 
 function storeAvatar(response) {
-  const avatar = response.data.avatar;
+  const avatar = response.data.avatar.url;
   sessionStorage.setItem("avatar", avatar);
-  console.log("Avatar:", response.data.avatar);
+  console.log("Avatar: ", response.data.avatar.url);
 }
