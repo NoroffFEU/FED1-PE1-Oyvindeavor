@@ -1,6 +1,11 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { emailInput, passwordInput } from "./loginForm.mjs";
 import { storeUserName } from "./utils/storeUserName.mjs";
+import { updateUI } from "./utils/updateUi.mjs";
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateUI();
+});
 
 async function login() {
   try {
