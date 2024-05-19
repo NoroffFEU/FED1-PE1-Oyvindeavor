@@ -1,31 +1,113 @@
-import { clearAccessToken } from "./utils/clearAccessToken.mjs";
-import { redirectHome } from "./utils/redirectHome.mjs";
+import { displayAvatar } from "./utils/displayAvatar.mjs";
+import { updateUI } from "./utils/updateUi.mjs";
+import { doFetch } from "./utils/doFetch.mjs";
+import {apiUrl} from "./constants.mjs"
+import { searchPosts } from "./utils/search.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   const logOutButton = document.querySelector(".logout-btn");
   displayUsername();
-  // event listener to the logout button
-  logOutButton.addEventListener("click", () => {
-    clearAccessToken();
-    redirectHome();
-  });
+  displayAvatar();
+  updateUI();
 });
 
 function displayUsername() {
   const username = sessionStorage.getItem("userName");
+  const capitalizedUsername = username.charAt(0).toUpperCase() + username.slice(1);
   const usernameElement = document.querySelector(".userName");
-  usernameElement.textContent = `Welcome back ${username}`;
+  usernameElement.textContent = `Welcome back ${capitalizedUsername} 👋`;
 }
 
-function displayAvatar() {
-  let avatar = sessionStorage.getItem("avatar");
-  const avatarElement = document.querySelector("#profile-picture");
-  if (avatar === null) {
-    avatar = "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"; // Add a default avatar here later !!
-  } else {
-    avatar = sessionStorage.getItem("avatar");
-    avatarElement.src = avatar;
+
+async function getSixLatestPosts() {
+  try {
+    const response = await doFetch("/blog/posts/oyvind?sortOrder=desc&limit=6");
+    console.log(response);
+
+    if (response.data.length === 0) {
+      console.log('No posts available');
+      return []; // Return an empty array if no posts are available
+    } else {
+      return response.data;
+    }
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    throw error; // Re-throw the error to be caught by the caller
   }
 }
 
-displayAvatar();
+async function createBlogPost() {
+  const blogPosts = await getSixLatestPosts();
+
+  blogPosts.forEach((post) => {
+
+  // Create elements
+
+  const blogPostsContainer = document.querySelector('.articles-dashboard');
+
+
+  const blogPost = document.createElement('div');
+  blogPost.classList.add('blog-post');
+
+  const postTitle = document.createElement('h3');
+  postTitle.textContent = post.title;
+
+  const postImage = document.createElement('img');
+  postImage.src = post.media.url;
+  postImage.alt = post.media.alt;
+
+
+  const btnContainer = document.createElement('div');
+  btnContainer.classList.add('btn-container');
+
+  const editBtn = document.createElement('button');
+ 
+  editBtn.textContent = 'Edit';
+  editBtn.addEventListener('click', () => {
+    window.location.href = `/post/edit.html?id=${post.id}`;
+  });
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.addEventListener('click', async () => {
+    await deleteBlogPost(post.id);
+    window.location.reload();
+  });
+
+  // Append elements
+  btnContainer.appendChild(editBtn);
+  btnContainer.appendChild(deleteBtn);
+
+  blogPost.appendChild(postTitle);
+  blogPost.appendChild(postImage);
+  blogPost.appendChild(btnContainer);
+
+  blogPostsContainer.appendChild(blogPost);
+  });
+ 
+}
+
+createBlogPost();
+
+async function deleteBlogPost(id) {
+  // Display confirmation dialog
+  const confirmed = window.confirm("Are you sure you want to delete this blog post?");
+
+  // If user confirms, proceed with delete operation
+  if (confirmed) {
+    try {
+      const response = await fetch(`${apiUrl}/blog/posts/oyvind/${id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      console.error("Error deleting post:", error);
+      alert("Error deleting post");
+    }
+  }
+}
+
+searchPosts();
