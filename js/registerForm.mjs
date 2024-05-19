@@ -1,4 +1,9 @@
 import { doFetch } from "./utils/doFetch.mjs";
+import { updateUI } from "./utils/updateUi.mjs";
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateUI();
+});
 
 function registerForm() {
   const bio = document.getElementById("bio");
@@ -44,3 +49,30 @@ function profilePicPreview() {
   });
 }
 profilePicPreview();
+
+
+
+
+
+
+
+
+
+
+
+// async function deleteBlogPost(id) {
+//   try {
+//     const response = await doFetch(`/blog/posts/oyvind/${id}`, {
+//       method: "DELETE",
+//       headers: {
+//         authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+//       },
+//     });
+//     console.log(response);
+//   } catch (error) {
+//     console.error("Error deleting post:", error);
+//     alert("Error deleting post");
+//   }
+// }
+
+// deleteBlogPost("c15a7e0c-8aac-403b-bd84-253cbf5c091e");
