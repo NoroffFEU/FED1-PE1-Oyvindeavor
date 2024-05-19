@@ -9,11 +9,11 @@
   <!--Resets-->
   <link rel="stylesheet" href="CSS/styles.css" />
   <!--Fonts-->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-    rel="stylesheet" />
+    href="https://fonts.googleapis.com/css2?family=Gruppo&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
   <script type="module" src="js/main.mjs"></script>
   <!-- JS -->
 </head>
@@ -23,18 +23,51 @@
   <header>
     <div class="header-container">
       <!--Logo-->
-      <div class="logo-container">
-        <img src="" alt="Hotview Labs Logo" />
-        <h2>Hotview Labs</h2>
-      </div>
+      <a href="index.html">
+        <div class="logo-container">
+          <img src="assets/logo.svg" alt="Hotview Labs Logo" />
+          <p>Hotview Labs</p>
+        </div>
+      </a>
+      <!--Login END -->
+      <!--Account -->
       <div class="account">
         <div class="profile-info">
-          <img class="profile-picture"
-            src="https://images.unsplash.com/photo-1483104879057-379b6c2fe5a2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
-            alt="Profile Picture" />
-          <a class="login-btn" href="/account/login.html">Login</a>
+          <!--Profile picture-->
+          <a class="profile-picture-anchor" >
+            <img class="profile-picture"
+              src="assets/account_circle_24dp_FILL0_wght100_GRAD200_opsz48.svg"
+              alt="Profile Picture" />
+          </a>
+          <!-- Login/Logout button -->
+          <a class="login-btn label-text" href="/account/login.html">Login</a>
+          <a class="logout-btn label-text">Log out</a>
         </div>
       </div>
+
+      <!-- Hamburger menu hidden by default-->
+      <div class="hamburger-menu">
+        <button class="hamburger-menu-button"><img src="assets/hamburgerMenu.svg"
+            alt="Hamburger Menu" /></button>
+        <div class="hamburger-menu-content">
+          <div class="logo-container">
+            <p>Hotview Labs</p>
+          </div>
+          <div class="close-menu">
+            <button class="close-menu-button"><img
+                src="../assets/close_24dp_FILL0_wght100_GRAD200_opsz24.svg"
+                alt="Close Menu" /></button>
+          </div>
+          <div class="navigation">
+            <a href="index.html">Articles</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="account/login.html">Login</a>
+            <a href="index.html">Home </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
     <!-- Section 1 Hero Carousel -->
@@ -44,67 +77,163 @@
           <img class="carouselImg"
             src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=4144&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Blog Image 1" />
+            <a href="">  
           <div class="carousel-text">
-            <h2>The Quantum Computing Revolution: Unlocking Unprecedented Computational Power</h2>
-            <p>Blog Description 1</p>
+            <h1 id="title">The Quantum Computing Revolution: Unlocking Unprecedented Computational Power</h1>
+            <p id="description">Blog Description 1</p>
           </div>
+        </a>
         </div>
         <div class="carousel-item">
           <img class="carouselImg"
             src="https://world-schools.com/wp-content/uploads/2023/01/IMG-Academy-cover-WS.webp"
             alt="Blog Image 2" />
+            <a href="">
           <div class="carousel-text">
-            <h2>5G and the Future of Connectivity: Paving the Way for Innovation in IoT and Beyond
+            <h2 id="title">5G and the Future of Connectivity: Paving the Way for Innovation in IoT and Beyond
             </h2>
-            <p>Blog Description 2</p>
+            <p id="description">Blog Description 2</p>
           </div>
+        </a>
         </div>
+
         <div class="carousel-item">
-          <img class=""
+          <img class="carouselImg"
             src="https://world-schools.com/wp-content/uploads/2023/01/IMG-Academy-cover-WS.webp"
-            alt="Blog Image 3" />
+            alt="Blog Image 2" />
+            <a href="">
           <div class="carousel-text">
-            <h2>Sustainable Tech: Building a Greener Future Through Eco-Friendly Innovations</h2>
-            <p>Blog Description 3</p>
+            <h2 id="title">5G and the Future of Connectivity: Paving the Way for Innovation in IoT and Beyond
+            </h2>
+            <p id="description">Blog Description 2</p>
           </div>
+        </a>
         </div>
+
+        
+       
+        
       </div>
       <div class="carousel-nav">
-        <button type="button" class="carousel-prev-btn">Prev</button>
-        <button type="button" class="carousel-next-btn">Next</button>
+        <button type="button" class="carousel-prev-btn"><img src="assets/arrow-backwards.svg"
+            alt="s">
+        </button>
+        <button type="button" class="carousel-next-btn"> <img src="assets/arrow-forward.svg"
+            alt="s">
+        </button>
       </div>
+      <div class="divider"></div>
     </section>
-    <!-- Section 2 Blog Feed -->
+    <!-- Section 2 Blog Feed  Grid -->
     <section class="grid-section">
       <div class="grid-container">
-        <div class="grid-item1 display-flex">
+        <div class="grid-item ">
           <img
             src="https://images.unsplash.com/photo-1496065187959-7f07b8353c55?q=80&w=4140&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Blog Image 1" />
-          <h2>The Evolution of DevOps: Streamlining Software Delivery in the Era of Continuous
-            Integration</h2>
-          <p>Blog Description 1</p>
+          <div class="grid-text">
+            <a href="">
+              <h2>The Evolution of DevOps: Streamlining Software Delivery in the Era of Continuous
+                Integration</h2>
+            </a>
+
+            
+              <span class="label-text">By Author Name</span>
+              <span class="label-text">Published Date</span>
+              <span class="label-text">Category</span>
+              
+            
+          </div>
+         
         </div>
-        <div class="grid-item2 display-flex">
+        <div class="grid-item ">
           <img
             src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=3212&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Blog Image 2" />
-          <h2>Augmented Reality: Transforming User Experiences and Redefining Interaction Paradigms
-          </h2>
-          <p>Blog Description 2</p>
+          <div class="grid-text">
+            <h2>Augmented Reality: Transforming User Experiences and Redefining Interaction
+              Paradigms </h2>
+            
+          </div>
         </div>
-        <div class="grid-item3 display-flex">
+        <div class="grid-item ">
           <img
             src="https://plus.unsplash.com/premium_photo-1682145373962-4d76b19410ab?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
             alt="Blog Image 3" />
-          <h2>Blog Title 3</h2>
-          <p>Blog Description 3</p>
+          <div class="grid-text">
+            <h2>Blog Title 3</h2>
+            
+          </div>
         </div>
+
+        <div class="grid-item ">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1682145373962-4d76b19410ab?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
+            alt="Blog Image 3" />
+          <div class="grid-text">
+            <h2>Blog Title 3</h2>
+            
+          </div>
+        </div>
+
+        <div class="grid-item ">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1682145373962-4d76b19410ab?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
+            alt="Blog Image 3" />
+          <div class="grid-text">
+            <h2>Blog Title 3</h2>
+            
+          </div>
+        </div>
+
+        <div class="grid-item ">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1682145373962-4d76b19410ab?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
+            alt="Blog Image 3" />
+          <div class="grid-text">
+            <h2>Blog Title 3</h2>
+            
+          </div>
+        </div>
+      </div>
+      
     </section>
+
+    <section class="sort-by">
+      <div class="sections-container">
+        <section class="sort-by section">
+          <h2 class="title-text">Sort By</h2>
+          <div class="sort-by-container">
+            <label for="category">Category:</label>
+            <select id="category" name="category">
+              <option value="tech">Technology</option>
+              <option value="health">Health</option>
+              <option value="business">Business</option>
+              <option value="travel">Travel</option>
+            </select>
+            <label for="date">Date:</label>
+            <select id="date" name="date">
+              <option value="tech">Newest</option>
+              <option value="health">Oldest</option>
+            </select>
+          </div>
+        </section>
+        <section class="search section">
+          <h2 class="title-text">Search Articles</h2>
+          <form class="search-form">
+            <input type="text" class="search-input" placeholder="Search articles..." />
+          </form>
+        </section>
+      </div>
+    </section>
+    <div class="divider"></div>
     <!-- Section 2 blog feed end -->
     <!-- Section 3 Articles -->
+    
     <section class="bottom-articles">
-      <h2 class="title-text">Latest Articles</h2>
+      <h2>Latest Articles</h2>
+      <div class="divider"></div>
+      
       <div class="articles-container">
         <div class="article-item">
           <div class="article-image">
@@ -116,170 +245,57 @@
             <div class="author-date">
               <span class="label-text">By Author Name</span>
               <span class="label-text">Published Date</span>
+              <span class="label-text">category</span>
             </div>
-            <h2 class="title-text">Unlocking Innovation: How AI is Revolutionizing Product
-              Development</h2>
-            <p class="body-text"> empowering tech leaders to innovate faster and more efficiently.
-            </p>
+            <h2>Unlocking Innovation: How AI is Revolutionizing Product Development</h2>
+            
           </div>
         </div>
-        <div class="articles-container">
-          <div class="article-item">
-            <div class="article-image">
-              <img
-                src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=3200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Blog Image 1" />
-            </div>
-            <div class="article-text">
-              <h2 class="title-text">Cybersecurity in a Hyperconnected World: Strategies for
-                Protecting Your Digital Assets</h2>
-              <p class="body-text">Blog Description 1</p>
-            </div>
+        <div class="article-item">
+          <div class="article-image">
+            <img
+              src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
+              alt="Blog Image 1" />
           </div>
-          <div class="articles-container">
-            <div class="article-item">
-              <div class="article-image">
-                <img
-                  src="https://plus.unsplash.com/premium_photo-1678566111481-8e275550b700?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
-                  alt="Blog Image 1" />
-              </div>
-              <div class="article-text">
-                <h2 class="title-text">Cybersecurity in a Hyperconnected World: Strategies for
-                  Protecting Your Digital Assets</h2>
-                <p class="body-text">Blog Description 1</p>
-              </div>
+          <div class="article-text">
+            <div class="author-date">
+              <span class="label-text">By Author Name</span>
+              <span class="label-text">Published Date</span>
+              <span class="label-text">category</span>
             </div>
-            <div class="articles-container">
-              <div class="article-item">
-                <div class="article-image">
-                  <img
-                    src="https://images.unsplash.com/photo-1538391543564-047a76156421?q=80&w=3313&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Blog Image 1" />
-                </div>
-                <div class="article-text">
-                  <h2 class="title-text">Cybersecurity in a Hyperconnected World: Strategies for
-                    Protecting Your Digital Assets</h2>
-                  <p class="body-text">Blog Description 1</p>
-                </div>
-              </div>
-              <div class="articles-container">
-                <div class="article-item">
-                  <div class="article-image">
-                    <img
-                      src="https://images.unsplash.com/photo-1581089781785-603411fa81e5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTF8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
-                      alt="Blog Image 1" />
-                  </div>
-                  <div class="article-text">
-                    <h2 class="title-text">Cybersecurity in a Hyperconnected World: Strategies for
-                      Protecting Your Digital Assets</h2>
-                    <p class="body-text">Blog Description 1</p>
-                  </div>
-                </div>
-                <div class="articles-container">
-                  <div class="article-item">
-                    <div class="article-image">
-                      <img
-                        src="https://world-schools.com/wp-content/uploads/2023/01/IMG-Academy-cover-WS.webp"
-                        alt="Blog Image 1" />
-                    </div>
-                    <div class="article-text">
-                      <h2 class="title-text">Cybersecurity in a Hyperconnected World: Strategies for
-                        Protecting Your Digital Assets</h2>
-                      <p class="body-text">Blog Description 1</p>
-                    </div>
-                  </div>
-                  <div class="articles-container">
-                    <div class="article-item">
-                      <div class="article-image">
-                        <img
-                          src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTEwfHx0ZWNobm9sb2d5fGVufDB8fDB8fHww"
-                          alt="Blog Image 1" />
-                      </div>
-                      <div class="article-text">
-                        <h2 class="title-text">Cybersecurity in a Hyperconnected World: Strategies
-                          for Protecting Your Digital Assets</h2>
-                        <p class="body-text">Blog Description 1</p>
-                      </div>
-                    </div>
-                    <div class="articles-container">
-                      <div class="article-item">
-                        <div class="article-image">
-                          <img
-                            src="https://plus.unsplash.com/premium_photo-1682124637030-af00413f14a7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI1fHx0ZWNobm9sb2d5fGVufDB8fDB8fHww"
-                            alt="Blog Image 1" />
-                        </div>
-                        <div class="article-text">
-                          <h2 class="title-text">Cybersecurity in a Hyperconnected World: Strategies
-                            for Protecting Your Digital Assets</h2>
-                          <p class="body-text">Blog Description 1</p>
-                        </div>
-                      </div>
-                      <div class="articles-container">
-                        <div class="article-item">
-                          <div class="article-image">
-                            <img
-                              src="https://images.unsplash.com/photo-1498036882173-b41c28a8ba34?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                              alt="Blog Image 1" />
-                          </div>
-                          <div class="article-text">
-                            <h2 class="title-text">Cybersecurity in a Hyperconnected World:
-                              Strategies for Protecting Your Digital Assets</h2>
-                            <p class="body-text">Blog Description 1</p>
-                          </div>
-                        </div>
-                        <div class="articles-container">
-                          <div class="article-item">
-                            <div class="article-image">
-                              <img
-                                src="https://plus.unsplash.com/premium_photo-1681494162721-9fd9f120a9e2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTUzfHx0ZWNobm9sb2d5fGVufDB8fDB8fHww"
-                                alt="Blog Image 1" />
-                            </div>
-                            <div class="article-text">
-                              <h2 class="title-text">Cybersecurity in a Hyperconnected World:
-                                Strategies for Protecting Your Digital Assets</h2>
-                              <p class="body-text">Blog Description 1</p>
-                            </div>
-                          </div>
-                          <div class="articles-container">
-                            <div class="article-item">
-                              <div class="article-image">
-                                <img
-                                  src="https://images.unsplash.com/photo-1487875961445-47a00398c267?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTM2fHx0ZWNobm9sb2d5fGVufDB8fDB8fHww"
-                                  alt="Blog Image 1" />
-                              </div>
-                              <div class="article-text">
-                                <h2 class="title-text">Cybersecurity in a Hyperconnected World:
-                                  Strategies for Protecting Your Digital Assets</h2>
-                                <p class="body-text">Blog Description 1</p>
-                              </div>
-                            </div>
-                            <div class="articles-container">
-                              <div class="article-item">
-                                <div class="article-image">
-                                  <img
-                                    src="https://images.unsplash.com/photo-1451187863213-d1bcbaae3fa3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI2fHx0ZWNobm9sb2d5fGVufDB8fDB8fHww"
-                                    alt="Blog Image 1" />
-                                </div>
-                                <div class="article-text">
-                                  <h2 class="title-text">Cybersecurity in a Hyperconnected World:
-                                    Strategies for Protecting Your Digital Assets</h2>
-                                  <p class="body-text">Blog Description 1</p>
-                                </div>
-                              </div>
+            <h2>Unlocking Innovation: How AI is Revolutionizing Product Development</h2>
+            
+          </div>
+        </div>
     </section>
     <!-- More articles button -->
     <button class="more-articles-btn"> View more articles </button>
     <!-- End More articles button -->
   </main>
   <footer>
+   
     <div class="footer-container">
       <div class="footer-item">
-        <h3>Hotview Labs</h3>
+      <a href="index.html">
+        <div class="logo-container">
+          <img src="assets/logo.svg" alt="Hotview Labs Logo" />
+          <p>Hotview Labs</p>
+        </div>
+      </a>
+    </div>
+      <div class="footer-item">
+        <div class="socials">
+          <a href="https://www.facebook.com/"><img src="assets/317727_facebook_social media_social_icon.svg" alt="Facebook" /></a>
+          <a href="https://www.twitter.com/"><img src="assets/5296516_tweet_twitter_twitter logo_icon.svg" alt="Twitter" /></a>
+          <a href="https://www.instagram.com/"><img src="assets/5296765_camera_instagram_instagram logo_icon.png"
+              alt="Instagram" /></a>
+
+          <a href="https://www.linkedin.com/"><img src="assets/317725_linkedin_social_icon.svg"
+              alt="LinkedIn" /></a>
+        </div>
         <p>Hotview Labs is a blog that provides information on the latest technology trends and
           innovations.</p>
       </div>
-      <div class="logo-container">
-        <img src="" alt="Hotview Labs Logo" />
   </footer>
 </body>
 
