@@ -80,71 +80,79 @@
         <h2 class="userName">Welcome back Øyvind</h2>
         <h3>What do you wanna do today?</h3>
       </div>
-      <div class="dashboard-features">
-        <div class="feature">
-          <a href="../post/index.html" class="feature-btn" id="createNewPostBtn">Create a new post
-            <span>Icon</span></a>
-          <a href="../account/register.html" class="feature-btn">Create a new account
-            <span>Icon</span></a>
-        </div>
-      </div>
-    </section>
-   
-    <!-- Latest Blog Posts -->
-    <section class="dashboard-latest-blog-posts">
-      <h2>Latest Blog Posts</h2>
-      <section>
-        <div class="search-input">
-          <input id="searchTest" type="text" placeholder="Search for blog posts" />
-          <button>Search</button>
+      <section class="dashboard-features-section">
+        <div class="dashboard-features">
+          <button class="feature-btn" id="createNewPostBtn"> Create a new post <img
+              src="../assets/edit_square_24dp_FILL0_wght400_GRAD0_opsz24.svg" alt="Create Post Icon"
+              class="feature-icon">
+          </button>
+          <button class="feature-btn" id="createNewAccountBtn"> Create a new account <img
+              src="../assets/person_add_24dp_FILL0_wght400_GRAD0_opsz24.svg"
+              alt="Create Account Icon" class="feature-icon">
+          </button>
         </div>
       </section>
+    </section>
+    <!-- Latest Blog Posts -->
+    <section class="dashboard-latest-blog-posts">
+      <section class="search">
+        <div class="search-container">
+          <input type="text" placeholder="Search for articles" id="search-input" />
+          <button id="search-button">Search</button>
+        </div>
+        <div class="sort-filter-container">
+          <div class="sort">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort">
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
+          <div class="filter">
+            <label for="filter">Filter by:</label>
+            <select name="filter" id="filter">
+              <option value="all">All</option>
+              <option value="technology">Technology</option>
+              <option value="science">Science</option>
+              <option value="business">Business</option>
+              <option value="health">Health</option>
+              <option value="lifestyle">Lifestyle</option>
+            </select>
+          </div>
+        </div>
+      </section>
+      <h2>Blog posts</h2>
       <div class="articles-dashboard">
       </div>
     </section>
     <!-- Latest blog posts END -->
     <section class="all-blog-posts">
-      <h2>All Blog Posts</h2>
       <div class="articles-dashboard">
-        <div class="blog-post">
-          <h3>Post Title</h3>
-          <p>Post Content</p>
-          <button class="edit-btn">Edit</button>
-          <button class="delete-btn">Delete</button>
-        </div>
-        <div class="blog-post">
-          <h3>Post Title</h3>
-          <p>Post Content</p>
-          <button class="edit-btn">Edit</button>
-          <button class="delete-btn">Delete</button>
-        </div>
-        <div class="blog-post">
-          <h3>Post Title</h3>
-          <p>Post Content</p>
-          <button class="edit-btn">Edit</button>
-          <button class="delete-btn">Delete</button>
-        </div>
+      </div>
+      <div class="pagination">
+      </div>
       </div>
     </section>
   </main>
   <footer>
-   
     <div class="footer-container">
       <div class="footer-item">
-      <a href="index.html">
-        <div class="logo-container">
-          <img src="../assets/logo.svg" alt="Hotview Labs Logo" />
-          <p>Hotview Labs</p>
-        </div>
-      </a>
-    </div>
+        <a href="index.html">
+          <div class="logo-container">
+            <img src="../assets/logo.svg" alt="Hotview Labs Logo" />
+            <p>Hotview Labs</p>
+          </div>
+        </a>
+      </div>
       <div class="footer-item">
         <div class="socials">
-          <a href="https://www.facebook.com/"><img src="../assets/317727_facebook_social media_social_icon.svg" alt="Facebook" /></a>
-          <a href="https://www.twitter.com/"><img src="../assets/5296516_tweet_twitter_twitter logo_icon.svg" alt="Twitter" /></a>
-          <a href="https://www.instagram.com/"><img src="../assets/5296765_camera_instagram_instagram logo_icon.png"
+          <a href="https://www.facebook.com/"><img
+              src="../assets/317727_facebook_social media_social_icon.svg" alt="Facebook" /></a>
+          <a href="https://www.twitter.com/"><img
+              src="../assets/5296516_tweet_twitter_twitter logo_icon.svg" alt="Twitter" /></a>
+          <a href="https://www.instagram.com/"><img
+              src="../assets/5296765_camera_instagram_instagram logo_icon.png"
               alt="Instagram" /></a>
-
           <a href="https://www.linkedin.com/"><img src="../assets/317725_linkedin_social_icon.svg"
               alt="LinkedIn" /></a>
         </div>
