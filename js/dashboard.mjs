@@ -1,15 +1,30 @@
 import { displayAvatar } from "./utils/displayAvatar.mjs";
 import { updateUI } from "./utils/updateUi.mjs";
 import { doFetch } from "./utils/doFetch.mjs";
-import {apiUrl} from "./constants.mjs"
+import { apiUrl } from "./constants.mjs";
 import { searchPosts } from "./utils/search.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const logOutButton = document.querySelector(".logout-btn");
+  addEventListenerCreatePost();
+  addEventListenerCreateAccount();
   displayUsername();
   displayAvatar();
   updateUI();
 });
+
+function addEventListenerCreateAccount() {
+  const createAccountButton = document.querySelector("#createNewAccountBtn");
+  createAccountButton.addEventListener("click", () => {
+    window.location.href = "../account/register.html";
+  });
+}
+
+function addEventListenerCreatePost() {
+  const createPostButton = document.querySelector("#createNewPostBtn");
+  createPostButton.addEventListener("click", () => {
+    window.location.href = "../post/index.html";
+  });
+}
 
 function displayUsername() {
   const username = sessionStorage.getItem("userName");
@@ -18,73 +33,61 @@ function displayUsername() {
   usernameElement.textContent = `Welcome back ${capitalizedUsername} 👋`;
 }
 
-
-async function getSixLatestPosts() {
+async function getAllBlogPosts() {
   try {
-    const response = await doFetch("/blog/posts/oyvind?sortOrder=desc&limit=6");
+    const response = await doFetch("/blog/posts/oyvind");
     console.log(response);
-
-    if (response.data.length === 0) {
-      console.log('No posts available');
-      return []; // Return an empty array if no posts are available
-    } else {
-      return response.data;
-    }
+    return response.data;
   } catch (error) {
     console.error("Error fetching posts:", error);
-    throw error; // Re-throw the error to be caught by the caller
   }
 }
 
 async function createBlogPost() {
-  const blogPosts = await getSixLatestPosts();
+  const blogPosts = await getAllBlogPosts();
 
   blogPosts.forEach((post) => {
+    // Create elements
 
-  // Create elements
+    const blogPostsContainer = document.querySelector(".articles-dashboard");
 
-  const blogPostsContainer = document.querySelector('.articles-dashboard');
+    const blogPost = document.createElement("div");
+    blogPost.classList.add("blog-post");
 
+    const postTitle = document.createElement("h3");
+    postTitle.textContent = post.title;
 
-  const blogPost = document.createElement('div');
-  blogPost.classList.add('blog-post');
+    const postImage = document.createElement("img");
+    postImage.src = post.media.url;
+    postImage.alt = post.media.alt;
 
-  const postTitle = document.createElement('h3');
-  postTitle.textContent = post.title;
+    const btnContainer = document.createElement("div");
+    btnContainer.classList.add("btn-container");
 
-  const postImage = document.createElement('img');
-  postImage.src = post.media.url;
-  postImage.alt = post.media.alt;
+    const editBtn = document.createElement("button");
 
+    editBtn.textContent = "Edit";
+    editBtn.addEventListener("click", () => {
+      window.location.href = `/post/edit.html?id=${post.id}`;
+    });
 
-  const btnContainer = document.createElement('div');
-  btnContainer.classList.add('btn-container');
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.addEventListener("click", async () => {
+      await deleteBlogPost(post.id);
+      window.location.reload();
+    });
 
-  const editBtn = document.createElement('button');
- 
-  editBtn.textContent = 'Edit';
-  editBtn.addEventListener('click', () => {
-    window.location.href = `/post/edit.html?id=${post.id}`;
+    // Append elements
+    btnContainer.appendChild(editBtn);
+    btnContainer.appendChild(deleteBtn);
+
+    blogPost.appendChild(postTitle);
+    blogPost.appendChild(postImage);
+    blogPost.appendChild(btnContainer);
+
+    blogPostsContainer.appendChild(blogPost);
   });
-
-  const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'Delete';
-  deleteBtn.addEventListener('click', async () => {
-    await deleteBlogPost(post.id);
-    window.location.reload();
-  });
-
-  // Append elements
-  btnContainer.appendChild(editBtn);
-  btnContainer.appendChild(deleteBtn);
-
-  blogPost.appendChild(postTitle);
-  blogPost.appendChild(postImage);
-  blogPost.appendChild(btnContainer);
-
-  blogPostsContainer.appendChild(blogPost);
-  });
- 
 }
 
 createBlogPost();
@@ -111,3 +114,9 @@ async function deleteBlogPost(id) {
 }
 
 searchPosts();
+
+function clearContainer(container) {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+}
