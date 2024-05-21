@@ -1,4 +1,4 @@
-import { apiUrl } from "./js/constants.mjs";
+import { apiUrl } from "../constants.mjs";
 import { handleErrors } from "./handleErrors.mjs";
 
 async function doFetch(endpoint, options) {
