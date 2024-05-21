@@ -1,4 +1,5 @@
 import { apiUrl } from "/js/constants.mjs";
+import { handleErrors } from "./handleErrors.mjs";
 
 async function doFetch(endpoint, options) {
   try {
@@ -6,7 +7,8 @@ async function doFetch(endpoint, options) {
     const url = apiUrl + endpoint;
 
     const response = await fetch(url, options);
-
+    // Check if the response is successful (status 200-299)
+    handleErrors(response);
     // Return the response as JSON
     return response.json();
   } catch (error) {
@@ -25,16 +27,3 @@ function hideSpinner() {
   document.body.removeAttribute("loading");
 }
 
-async function doDelete() {
-  try {
-    const response = await fetch("/blog/posts/oyvind/1", {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
-      },
-    });
-    console.log(response);
-  } catch (error) {
-    console.error("Error deleting post:", error);
-  }
-}
