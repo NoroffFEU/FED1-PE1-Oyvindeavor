@@ -46,7 +46,6 @@ function hideLogoutButton() {
 }
 
 // Adds a redirect to the dashboard when clicked on profile picture in the header
-// Anchor is wrapped around the image element
 function addRedirectToAvatar() {
   const profilePictureAnchor = document.querySelector(".profile-picture-anchor");
   profilePictureAnchor.addEventListener("click", () => {
