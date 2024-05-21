@@ -1,12 +1,10 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { updateUI } from "./utils/updateUi.mjs";
-import {apiUrl} from "./constants.mjs"
+import { apiUrl } from "./constants.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   updateUI();
 });
-
-
 
 async function createPost() {
   const titleInput = document.getElementById("title");
@@ -15,7 +13,7 @@ async function createPost() {
   const altInput = document.getElementById("alt");
   const submitButton = document.getElementById("submit");
   const categoryInput = document.getElementById("category");
-  const userName = sessionStorage.getItem("userName");
+  console.log(altInput.value);
 
   submitButton.addEventListener("click", async (event) => {
     // Prevent the default form submission behavior
@@ -24,7 +22,7 @@ async function createPost() {
     // Check if any of the required fields are empty
     if (!titleInput.value || !contentInput.value || !imageInput.value || !categoryInput.value) {
       alert("Please fill in all required fields.");
-      return; // Stop execution if any required field is empty
+      return;
     }
 
     try {
@@ -35,7 +33,7 @@ async function createPost() {
           body: contentInput.value,
           media: {
             url: imageInput.value,
-            altText: altInput.value,
+            alt: altInput.value,
           },
           tags: [categoryInput.value],
         }),
@@ -63,8 +61,5 @@ async function createPost() {
     }
   });
 }
-
-
-
 
 createPost();
