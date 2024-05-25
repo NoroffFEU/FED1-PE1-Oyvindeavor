@@ -3,6 +3,7 @@ import { updateUI } from "./utils/updateUi.mjs";
 import { doFetch } from "./utils/doFetch.mjs";
 import { apiUrl } from "./constants.mjs";
 import { searchPosts } from "./utils/search.mjs";
+import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   addEventListenerCreatePost();
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   displayUsername();
   displayAvatar();
   updateUI();
+  hamburgerMenu();
 });
 
 function addEventListenerCreateAccount() {
