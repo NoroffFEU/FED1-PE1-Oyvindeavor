@@ -19,8 +19,8 @@
 </head>
 
 <body>
-  <!--Header-->
-  <header>
+   <!--Header-->
+   <header>
     <div class="header-container">
       <!--Logo-->
       <a href="index.html">
@@ -29,46 +29,43 @@
           <p>Hotview Labs</p>
         </div>
       </a>
-      <!--Login END -->
-      <!--Account -->
+      <!--Account-->
       <div class="account">
         <div class="profile-info">
           <!--Profile picture-->
           <a class="profile-picture-anchor">
-            <img class="profile-picture"
-              src="assets/account_circle_24dp_FILL0_wght100_GRAD200_opsz48.svg"
-              alt="Profile Picture" />
+            <img class="profile-picture" src="assets/account_circle_24dp_FILL0_wght100_GRAD200_opsz48.svg" alt="Profile Picture" />
           </a>
           <!-- Login/Logout button -->
           <a class="login-btn label-text" href="/account/login.html">Login</a>
           <a class="logout-btn label-text">Log out</a>
         </div>
       </div>
-      <!-- Hamburger menu hidden by default-->
-      <div class="hamburger-menu">
-        <button class="hamburger-menu-button"><img src="assets/hamburgerMenu.svg"
-            alt="Hamburger Menu" /></button>
-        <div class="hamburger-menu-content">
-          <div class="logo-container">
-            <img src="assets/logo.svg">
-            <p>Hotview Labs</p>
-          </div>
-          <div class="close-menu">
-            <button class="close-menu-button"><img
-                src="../assets/close_24dp_FILL0_wght100_GRAD200_opsz24.svg"
-                alt="Close Menu" /></button>
-          </div>
-          <div class="navigation">
-            <a href="index.html">Articles</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="account/login.html">Login</a>
-            <a href="index.html">Home </a>
-          </div>
-        </div>
-      </div>
+       <!-- Hamburger menu button -->
+       <button class="hamburger-menu-button">
+        <img src="assets/hamburgerMenu.svg" alt="Hamburger Menu icon" />
+      </button>
     </div>
+
+    
   </header>
+ 
+  <div class="side-menu">
+    
+    <div class="divider-side-menu"></div>
+    <div class="navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html">Articles</a>
+      
+      <a id="login-hamburger" href="account/login.html">Login</a>
+      <a id="logout-hamburger" href="index.html">Logout</a>
+      <a id="dashboard-hamburger" href="dashboard/index.html">Dashboard</a>
+    </div>
+    <div class="divider-side-menu"></div>
+    
+    
+   
+  </div>
   <main>
     <!-- Section 1 Hero Carousel -->
     <section class="hero-carousel">
