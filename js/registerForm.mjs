@@ -1,10 +1,11 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { updateUI } from "./utils/updateUi.mjs";
+import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   updateUI();
-  profilePicPreview(); // listen for changes to the profile picture input
-  registerForm(); // listen for submit button click
+  registerForm();
+  hamburgerMenu();
 });
 
 function registerForm() {
@@ -18,7 +19,7 @@ function registerForm() {
   submitButton.addEventListener("click", async (event) => {
     event.preventDefault();
     try {
-      const response = await doFetch("/auth/register", {
+      const response = await doFetch("/auth/register/", {
         method: "POST",
         body: JSON.stringify({
           name: name.value,
@@ -34,10 +35,15 @@ function registerForm() {
           "Content-Type": "application/json",
         },
       });
+
+      if (response.ok) {
+        alert("User registered successfully");
+        window.location.href = `../dashboard/index.html`;
+      }
       console.log(response);
     } catch (error) {
       console.error("Error registering:", error);
-      alert("Error registering");
+      alert("Error registering", error.message);
     }
   });
 }
@@ -47,6 +53,12 @@ function profilePicPreview() {
   const profilePicPreview = document.getElementById("profile-picture-preview");
 
   profilePic.addEventListener("input", () => {
+    if (!profilePic.value) {
+      profilePicPreview.style.display = "none";
+      return;
+    }
     profilePicPreview.src = profilePic.value;
+    profilePicPreview.style.display = "block";
   });
 }
+profilePicPreview();
