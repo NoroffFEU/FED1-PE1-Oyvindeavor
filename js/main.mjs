@@ -4,18 +4,31 @@ import { updateUI } from "./utils/updateUi.mjs";
 import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
 import { formatDate } from "./utils/formatDate.mjs";
 
-// Event listeners
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   /* Add event listeners to the hero carousel buttons */
   document.querySelector(".carousel-next-btn").addEventListener("click", nextSlide);
   document.querySelector(".carousel-prev-btn").addEventListener("click", prevSlide);
 
-  updateUI();
-  updateCarouselContents();
-  createLinksBlog();
-  initUpdateGridItems();
-  hamburgerMenu();
+  // Show spinner initially if not already shown
+  document.querySelector(".spinner-container").style.display = "block";
+
+  try {
+    await updateCarouselContents();
+    updateUI();
+    await createLinksBlog();
+    await initUpdateGridItems();
+    hamburgerMenu();
+    searchPosts();
+  } catch (error) {
+    console.error("Error during initial setup:", error);
+  } finally {
+    hideSpinner();
+  }
 });
+
+function hideSpinner() {
+  document.querySelector(".spinner-container").style.display = "none";
+}
 
 // Gets the last 3 posts created from the blog
 async function getThreeLatestPosts() {
@@ -59,6 +72,7 @@ async function createLinksBlog() {
 async function updateCarouselContents() {
   const carouselImages = document.querySelectorAll(".carouselImg");
   const carouselTitles = document.querySelectorAll(".carousel-text h1, h2");
+  const spinner = document.querySelector(".spinner-container");
 
   try {
     const blogPosts = await getThreeLatestPosts();
@@ -73,6 +87,7 @@ async function updateCarouselContents() {
       }
       index++;
     }
+    spinner.style.display = "none";
   } catch (error) {
     console.error("Error displaying latest posts:", error);
   }
@@ -80,26 +95,9 @@ async function updateCarouselContents() {
 
 async function getGridItemsHome() {
   try {
-    const response = await doFetch("/blog/posts/oyvind?limit=15&page=1");
-    const filterPosts = response.data.slice(3, 15); // slice for the first 3 posts so they are not included in the grid
+    const response = await doFetch(`/blog/posts/oyvind?limit=15&page=1`);
+    const filterPosts = response.data.slice(3, 15); // slice for the first 3 posts so the carousel is not included in the grid
     return filterPosts;
-  } catch (error) {
-    console.error("Error fetching posts:", error);
-  }
-}
-
-function FetchPageFromUrl() {
-  const url = new URL(window.location.href);
-  const page = url.searchParams.get("page");
-  console.log("getting page from url", page);
-  return page;
-}
-
-async function getTotalPages() {
-  try {
-    const response = await doFetch("/blog/posts/oyvind");
-    console.log(response.meta.pageCount);
-    return response.meta.pageCount;
   } catch (error) {
     console.error("Error fetching posts:", error);
   }
@@ -120,7 +118,8 @@ async function updateGridItems(posts) {
 
     const image = document.createElement("img");
     image.src = post.media.url;
-    image.alt = "Blog Image";
+    image.alt = post.media.alt;
+    image.loading = "lazy";
 
     const gridText = document.createElement("div");
     gridText.className = "grid-text";
@@ -156,7 +155,55 @@ async function initUpdateGridItems() {
   try {
     const posts = await getGridItemsHome();
     await updateGridItems(posts);
+    hideSpinner();
   } catch (error) {
     console.error("Failed to fetch posts:", error);
+  }
+}
+
+function searchPosts() {
+  const searchInput = document.getElementById("search-input");
+  const searchButton = document.getElementById("search-button");
+
+  // If the user deletes the search input, show the original grid items again
+  searchInput.addEventListener("input", async () => {
+    if (searchInput.value === "") {
+      const startPageGrid = await getGridItemsHome();
+      updateGridItems(startPageGrid);
+    }
+  });
+
+  const performSearch = async () => {
+    // If the user clicks search with no value do nothing
+    if (searchInput.value === "") {
+      return;
+    }
+
+    const searchValue = searchInput.value;
+    console.log("searchValue", searchValue);
+    const response = await doFetch(`/blog/posts/oyvind?limit=15`);
+    const searchResults = response.data.filter((post) => {
+      return post.title.toLowerCase().startsWith(searchValue.toLowerCase());
+    });
+    console.log(response);
+    updateGridItems(searchResults);
+  };
+
+  // On click do the search
+  searchButton.addEventListener("click", performSearch);
+
+  // If the user presses enter do the search
+  searchInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      performSearch();
+    }
+  });
+}
+async function sortByOldest() {
+  try {
+    const response = await getGridItemsHome();
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    throw error;
   }
 }
