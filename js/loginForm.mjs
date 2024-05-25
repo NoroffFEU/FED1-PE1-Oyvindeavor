@@ -2,7 +2,7 @@
 import { login } from "./login.mjs";
 
 function handleLoginFormSubmit(event) {
-  event.preventDefault(); 
+  event.preventDefault();
   login();
 }
 
