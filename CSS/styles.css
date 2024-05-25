@@ -122,6 +122,11 @@ header {
   margin: 0 auto;
 }
 
+.hamburger-menu-button,
+.side-menu {
+  display: none;
+}
+
 .logo-container {
   display: flex;
   align-items: center;
@@ -204,12 +209,36 @@ header {
   cursor: pointer;
 }
 
-.hamburger-menu {
-  display: none;
+/* Loading spinner */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  background: rgba(255, 255, 255, 0.5); 
+  z-index: 9999; 
 }
 
-.hamburger-menu-content {
-  display: none;
+.spinner {
+  border: 8px solid rgba(0, 0, 0, 0.1); 
+  border-left-color: #096e8a; 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -222,6 +251,7 @@ header {
   border-radius: 4px;
   margin-bottom: 30px;
   box-shadow: 10px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 0;
 }
 
 .carouselImg {
@@ -434,7 +464,6 @@ select {
 
 .grid-item img:hover {
   transition: ease all 0.5s;
-  transform: scale(1.1);
 }
 
 .grid-item {
@@ -459,7 +488,7 @@ select {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   background-color: var(--section-color);
   padding: 10px;
-  height: auto;
+  height: 120px;
 }
 
 /* Grid container description text */
@@ -577,9 +606,7 @@ button:active {
   ┃                 Forms                     ┃
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 /* Main Form Element Styles */
-input[type="text"],
-input[type="email"],
-input[type="number"],
+input,
 textarea,
 select {
   width: 100%;
@@ -593,29 +620,29 @@ select {
   background-color: white;
   color: var(--primary);
   font-family: "Nunito Sans", sans-serif;
+  transition: filter 0.3s ease, box-shadow 0.3s ease; 
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus,
+input:focus,
 textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 8px rgba(34, 40, 49, 0.2);
+  filter: drop-shadow(0 0 0.2rem #61dafb);
 }
 
 label {
-  font-family: "Nunito Sans", sans-serif;
   color: var(--text-color);
   padding: 5px;
   display: block;
+  font-weight: bold; 
+  margin-bottom: 5px; 
 }
 
-/* Placeholder styling */
 ::placeholder {
   color: var(--secondary);
-  opacity: 1;
+  opacity: 1; 
+  font-style: italic; 
 }
 
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -652,6 +679,7 @@ label {
   font-size: 14px;
   font-weight: 700;
   margin-left: 10px;
+  margin-bottom: 60px;
 }
 
 .blog-meta {
@@ -668,7 +696,7 @@ label {
   align-items: center;
   padding: 0 10px;
   background-color: transparent;
-  border: solid white 1px;
+  border: solid var(--secondary) 1px;
   border-radius: 4px;
   min-height: 30px;
   margin-right: 10px;
@@ -705,6 +733,7 @@ label {
   max-width: 600px;
   margin: 0 auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 60px;
 }
 
 .author-details {
@@ -794,7 +823,7 @@ label {
 .divider {
   height: 4px;
   width: 100%;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 4px;
   margin: 20px 0;
 }
@@ -802,16 +831,99 @@ label {
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃               Login section               ┃
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
+/* Container for the login form */
 .login-container {
   background-color: white;
   color: black;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  height: auto;
+  filter: drop-shadow(0 0 0.1rem #61dafb);
   width: 400px;
   margin: 0 auto;
   margin-top: 100px;
   padding: 20px;
+  font-family: "Prompt", sans-serif;
+}
+
+/* Center the heading */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Styling for form elements */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Custom button styling */
+.custom-button {
+  background-color: #082d29be; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.custom-button:hover {
+  background-color: #004d40; 
+}
+
+.custom-button:active {
+  background-color: #00251a; 
+}
+
+/* Additional utility classes  */
+
+/* To hide labels so its acessible to screen readers while keeping my design */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.align-center {
+  align-items: center;
 }
 
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -876,6 +988,7 @@ label {
   border-radius: 50%;
   margin-top: 20px;
   margin-bottom: 40px;
+  display: none;
 }
 
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -915,12 +1028,6 @@ label {
   margin-bottom: 10px;
 }
 
-.userName {
-  font-size: 1.8em;
-  color: #333;
-  margin: 0;
-}
-
 .greeting-text {
   font-size: 1.2em;
   color: #666;
@@ -954,7 +1061,7 @@ label {
 }
 
 .feature-btn:hover {
-  background-color: #0056b3;
+  background-color: var(--secondary);
 }
 
 .feature-btn .feature-icon {
@@ -1004,33 +1111,6 @@ label {
   ┃      Create new blog post section         ┃
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 
-.editor-container {
-  border: 1px solid #ccc;
-  padding: 10px;
-  min-height: 300px;
-  background-color: white;
-  color: black;
-}
-
-#content {
-  border: 1px solid #ccc;
-  padding: 10px;
-  min-height: 300px;
-  background-color: white;
-  color: black;
-  white-space: pre-wrap;
-}
-
-/* Edit blog posts section */
-#postContent {
-  border: 1px solid #ccc;
-  padding: 10px;
-  min-height: 300px;
-  background-color: white;
-  color: black;
-  white-space: pre-wrap;
-}
-
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃                Footer                     ┃
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
@@ -1042,6 +1122,16 @@ label {
   text-align: center;
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
   filter: drop-shadow(0 0 0.1rem #61dafb);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+footer {
+  height: 200px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 100px;
 }
 
 .footer-item {
@@ -1188,90 +1278,99 @@ footer .logo-container {
     grid-gap: 20px;
   }
 
-  /* Hamburger menu */
+  .hamburger-menu-button,
+  .side-menu {
+    display: block;
+  }
+
+  /* Hamburger menu button styles */
   .hamburger-menu-button {
-    position: absolute;
+    position: fixed; 
     top: 20px;
     right: 20px;
     cursor: pointer;
-    background-color: #61dafb;
+    background-color: var(--secondary);
     height: 40px;
     border: none;
-
     outline: none;
     border-radius: 4px;
-  }
-
-  .hamburger-menu-button:hover {
-    background-color: #0056b3;
-    transition: ease all 0.5s;
-  }
-
-  .hamburger-menu-button:focus {
-    background-image: url("assets/menu_open_24dp_FILL0_wght100_GRAD200_opsz24.svg");
-    transition: ease all 0.5s;
-  }
-
-  .hamburger-menu {
-    display: block;
-    width: 30px;
-    height: 3px;
-    margin: 6px 0;
-  }
-
-  .hamburger-menu-content {
-    display: none;
-    position: absolute;
-    background-color: var(--header-color);
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    top: 0;
-    left: 0;
-    height: 100%;
-  }
-
-  /* CSS to show the menu */
-  .hamburger-menu.open .hamburger-menu-content {
-    display: block;
-  }
-
-  .hamburger-menu-content a {
     color: white;
-    font-size: 30px;
-    margin: 20px;
-    font-family: "prompt", sans-serif;
   }
 
-  .hamburger-menu-content .logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .hamburger-menu-button img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
   }
 
-  .navigation {
+  /* Side menu styles */
+  .side-menu {
+    position: fixed;
+    top: 0;
+    left: -50%; 
+    width: 50%;
+    height: 100%;
+    background-color: var(--header-color);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s ease; 
+    z-index: 1000;
+    filter: drop-shadow(0 0 0.1rem #61dafb);
+  }
+
+  .side-menu.show {
+    left: 0;
+  }
+
+  /* No scroll when side menu is active to prevent scrollbar jumping */
+  body.no-scroll {
+    overflow: hidden;
+  }
+
+  /* Side menu content styling */
+  .side-menu .navigation {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    margin-top: 60px;
   }
 
-  .close-menu button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    background-color: #61dafb;
-    height: 40px;
-    border: none;
-
-    outline: none;
-    border-radius: 4px;
+  .opacity-blur {
+    filter: blur(3px);
+    transition: filter 0.3s ease;
   }
 
-  .close-menu button:hover {
-    background-color: #0056b3;
-    transition: ease all 0.5s;
+  .side-menu .navigation a {
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    text-decoration: none;
+    font-family: "Prompt", sans-serif;
+  }
+
+  .side-menu .navigation a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .divider-side-menu {
+    height: 1px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .side-menu > .navigation {
+    margin-bottom: 100px;
+  }
+
+  .socials-hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .socials-hamburger img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+    padding: 5px;
   }
 
   .sections-container {
