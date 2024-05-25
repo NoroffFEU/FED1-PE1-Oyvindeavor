@@ -1,10 +1,14 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { fetchIdFromUrl } from "./utils/fetchIdFromUrl.mjs";
+import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
+import { updateUI } from "./utils/updateUi.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   const postId = fetchIdFromUrl(); // Fetch the post ID from URL
   displayExistingDataToForm(postId);
   saveChanges(postId);
+  hamburgerMenu();
+  updateUI();
 });
 
 // Fetches the post data from the API using the post ID
