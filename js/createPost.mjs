@@ -1,9 +1,11 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { updateUI } from "./utils/updateUi.mjs";
 import { apiUrl } from "./constants.mjs";
+import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   updateUI();
+  hamburgerMenu();
 });
 
 async function createPost() {
