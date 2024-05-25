@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelector(".spinner-container").style.display = "block";
 
   try {
-    await updateCarouselContents();
+    await updateCarousel();
     updateUI();
-    await createLinksBlog();
+
     await initUpdateGridItems();
     hamburgerMenu();
     searchPosts();
@@ -48,60 +48,131 @@ async function getThreeLatestPosts() {
   }
 }
 
-async function createLinksBlog() {
+async function updateCarousel() {
   try {
-    const carouselLinks = document.querySelectorAll(".carousel-item a");
+    // Fetch the latest posts
     const blogPosts = await getThreeLatestPosts();
-    console.log(blogPosts);
+    console.log("Latest blog posts fetched:", blogPosts);
 
-    // Loop through carousel links and blog posts simultaneously
-    carouselLinks.forEach((link, index) => {
-      // Check if there are enough blog posts for the current index
-      if (index < blogPosts.length) {
-        const postId = blogPosts[index].id; // Get the ID of the corresponding blog post
-        link.href = `/blogpost.html?id=${postId}`; // Set href attribute with the ID
+    // Select carousel elements
+    const carouselLinks = document.querySelectorAll(".carousel-item a");
+    const carouselImages = document.querySelectorAll(".carouselImg");
+    const carouselTitles = document.querySelectorAll(".carousel-text h1, .carousel-text h2");
+
+    blogPosts.forEach((post, index) => {
+      // Check if the carousel elements exist for the current index
+      if (carouselLinks[index] && carouselImages[index] && carouselTitles[index]) {
+        // Update the link with the blog post ID
+        carouselLinks[index].href = `/blogpost.html?id=${post.id}`;
+
+        // Update the image source and alt text
+        carouselImages[index].src = post.media.url;
+        carouselImages[index].alt = post.media.alt || 'Blog post image';  // Provide default alt text if none exists
+
+        // Update the carousel title
+        carouselTitles[index].textContent = post.title;
       } else {
-        console.error(`No blog post found for carousel link at index ${index}.`);
+        console.error(`No carousel element found for index ${index}.`);
       }
     });
-  } catch (error) {
-    console.error("Error creating blog links:", error);
-  }
-}
 
-async function updateCarouselContents() {
-  const carouselImages = document.querySelectorAll(".carouselImg");
-  const carouselTitles = document.querySelectorAll(".carousel-text h1, h2");
-  const spinner = document.querySelector(".spinner-container");
-
-  try {
-    const blogPosts = await getThreeLatestPosts();
-    console.log("logging", blogPosts);
-
-    let index = 0;
-    for (const post of blogPosts) {
-      if (index < blogPosts.length) {
-        carouselImages[index].src = post.media.url;
-        carouselImages[index].alt = post.media.alt;
-        carouselTitles[index].textContent = post.title;
+    // Handle cases where there are fewer posts than carousel elements
+    for (let i = blogPosts.length; i < carouselLinks.length; i++) {
+      console.error(`No blog post available for carousel element at index ${i}.`);
+      
+      carouselLinks[i].href = "#";
+      if (carouselImages[i]) {
+        carouselImages[i].src = "";
+        carouselImages[i].alt = "";
       }
-      index++;
+      if (carouselTitles[i]) {
+        carouselTitles[i].textContent = "";
+      }
     }
-    spinner.style.display = "none";
+
   } catch (error) {
-    console.error("Error displaying latest posts:", error);
+    console.error("Error updating carousel:", error);
   }
 }
 
+// Default setup for the grid items on the home page
 async function getGridItemsHome() {
+  const sort = document.getElementById("sort").value;
+  const filter = document.getElementById("filter").value;
+  console.log("Sort order:", sort);
+  console.log("Filter:", filter);
+
   try {
-    const response = await doFetch(`/blog/posts/oyvind?limit=15&page=1`);
-    const filterPosts = response.data.slice(3, 15); // slice for the first 3 posts so the carousel is not included in the grid
-    return filterPosts;
+    const response = await doFetch(`/blog/posts/oyvind?limit=15&sortOrder=${sort}&_tag=${filter}`);
+    
+    // Check if data is available and proceed accordingly
+    if (!response.data || response.data.length === 0) {
+      console.log("No posts available");
+      return [];
+    }
+    
+    if (sort === "asc" ) {
+      // For ascending sort order, slice to get the last 3 posts
+      const filterPosts = response.data.slice(0, -3);
+      return filterPosts;
+    } else if (sort === "desc") {
+      // For descending sort order, slice to skip the first 3 posts
+      const filterPosts = response.data.slice(3);
+      return filterPosts;
+    } else {
+      // In case sort order is neither 'asc' nor 'desc', return all posts or handle as needed
+      console.log("Unrecognized sort order: ", sort);
+      return response.data;
+    }
   } catch (error) {
     console.error("Error fetching posts:", error);
+    return [];
   }
 }
+
+
+async function getFilteredGridItemsHome() {
+  const sort = document.getElementById("sort").value;
+  const filter = document.getElementById("filter").value;
+  console.log("Sort order:", sort);
+  console.log("Filter:", filter);
+
+  try {
+    if (filter === "") {
+      // If the filter is set to 'all', fetch all posts without filtering
+      return await getGridItemsHome();
+    }
+    const response = await doFetch(`/blog/posts/oyvind?limit=15&sortOrder=${sort}&_tag=${filter}`);
+    
+    // Check if data is available and proceed accordingly
+    if (!response.data || response.data.length === 0) {
+      console.log("No posts available");
+      return [];
+    }
+
+    // Directly return the fetched posts without slicing
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+}
+
+function filterEventListeners() {
+  const sortSelect = document.getElementById("sort");
+  sortSelect.addEventListener("change", async () => {
+    const posts = await getFilteredGridItemsHome();
+    updateGridItems(posts); 
+  });
+
+  const filterSelect = document.getElementById("filter");
+  filterSelect.addEventListener("change", async () => {
+    const posts = await getFilteredGridItemsHome();
+    updateGridItems(posts);  
+  });
+}
+
+filterEventListeners();
 
 async function updateGridItems(posts) {
   const container = document.querySelector(".grid-container");
@@ -155,7 +226,6 @@ async function initUpdateGridItems() {
   try {
     const posts = await getGridItemsHome();
     await updateGridItems(posts);
-    hideSpinner();
   } catch (error) {
     console.error("Failed to fetch posts:", error);
   }
@@ -198,12 +268,4 @@ function searchPosts() {
       performSearch();
     }
   });
-}
-async function sortByOldest() {
-  try {
-    const response = await getGridItemsHome();
-  } catch (error) {
-    console.error("Error fetching posts:", error);
-    throw error;
-  }
 }
