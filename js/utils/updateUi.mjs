@@ -45,6 +45,21 @@ function hideLogoutButton() {
   logoutButton.style.display = "none";
 }
 
+function changeHamburgerLoginButton() {
+  const hamburgerLoginButton = document.querySelector("#login-hamburger");
+  hamburgerLoginButton.style.textContent = "Logout";
+  hamburgerLoginButton.style.href = "../index.html";
+  clearAccessToken();
+}
+
+function createDashboardHamburgerLink() {
+  const navigationContainer = document.querySelector(".navigation");
+  const dashboardLink = document.createElement("a");
+  dashboardLink.textContent = "Dashboard";
+  dashboardLink.href = "../dashboard/index.html";
+  navigationContainer.appendChild(dashboardLink);
+}
+
 // Adds a redirect to the dashboard when clicked on profile picture in the header
 function addRedirectToAvatar() {
   const profilePictureAnchor = document.querySelector(".profile-picture-anchor");
