@@ -1,7 +1,7 @@
-function fetchIdFromUrl(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
-    return id;
-  }
+function fetchIdFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+  return id;
+}
 
-  export { fetchIdFromUrl };
+export { fetchIdFromUrl };
