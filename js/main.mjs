@@ -26,6 +26,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+// Quick fix for the select elements not resetting on page reload or revisit
+// Had an issue where the select elements would not reset to their first option and the blogposts would not update accordingly
+// https://stackoverflow.com/questions/50082801/how-to-reload-page-when-select-box-selected
+window.onload = function() {
+  // Reset each select element to its first option
+  const selects = document.querySelectorAll('select');
+  selects.forEach(select => {
+      select.selectedIndex = 0;
+  });
+};
+
+
 function hideSpinner() {
   document.querySelector(".spinner-container").style.display = "none";
 }
@@ -95,15 +107,18 @@ async function updateCarousel() {
   }
 }
 
+
+
 // Default setup for the grid items on the home page
 async function getGridItemsHome() {
   const sort = document.getElementById("sort").value;
   const filter = document.getElementById("filter").value;
-  console.log("Sort order:", sort);
-  console.log("Filter:", filter);
+
 
   try {
     const response = await doFetch(`/blog/posts/oyvind?limit=15&sortOrder=${sort}&_tag=${filter}`);
+    const page = response.meta.pageCount;
+    console.log("Pages: ", page);
     
     // Check if data is available and proceed accordingly
     if (!response.data || response.data.length === 0) {
@@ -199,7 +214,9 @@ async function updateGridItems(posts) {
     titleLink.href = `/blogpost.html?id=${post.id}`;
 
     const title = document.createElement("h2");
+    title.classList.add("title-text");
     title.textContent = post.title;
+
     titleLink.appendChild(title);
 
     const publishedDate = document.createElement("span");
@@ -210,10 +227,10 @@ async function updateGridItems(posts) {
     category.className = "label-text";
     category.textContent = `${post.tags[0]}`;
 
-    gridText.appendChild(titleLink);
     gridText.appendChild(publishedDate);
 
     gridText.appendChild(category);
+    gridText.appendChild(titleLink);
 
     gridItem.appendChild(image);
     gridItem.appendChild(gridText);
@@ -269,3 +286,5 @@ function searchPosts() {
     }
   });
 }
+
+
