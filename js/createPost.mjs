@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   hamburgerMenu();
 });
 
+
+
+
 async function createPost() {
   const titleInput = document.getElementById("title");
   const contentInput = document.getElementById("content");
@@ -15,16 +18,18 @@ async function createPost() {
   const altInput = document.getElementById("alt");
   const submitButton = document.getElementById("submit");
   const categoryInput = document.getElementById("category");
-  console.log(altInput.value);
 
   submitButton.addEventListener("click", async (event) => {
-    // Prevent the default form submission behavior
-    event.preventDefault();
+    event.preventDefault(); 
 
-    // Check if any of the required fields are empty
-    if (!titleInput.value || !contentInput.value || !imageInput.value || !categoryInput.value) {
-      alert("Please fill in all required fields.");
-      return;
+    if (!titleInput.checkValidity() || !contentInput.checkValidity() || !imageInput.checkValidity() || !altInput.checkValidity() || !categoryInput.checkValidity()) {
+      categoryInput.reportValidity();
+      altInput.reportValidity();
+
+      imageInput.reportValidity();
+      contentInput.reportValidity();
+      titleInput.reportValidity();
+      return; 
     }
 
     try {
@@ -45,13 +50,9 @@ async function createPost() {
         },
       });
 
-      // Check if the response is successful
       if (response.ok) {
-        // Parse the response body to get the data returned by the server
         const responseData = await response.json();
         const id = responseData.data.id;
-
-        // Redirect to the newly created blog post page
         window.location.href = `../blogpost.html?id=${id}`;
       } else {
         console.error("Error creating post:", response.statusText);
@@ -63,5 +64,8 @@ async function createPost() {
     }
   });
 }
+
+
+
 
 createPost();
