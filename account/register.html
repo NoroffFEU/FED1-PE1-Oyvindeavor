@@ -75,20 +75,24 @@
           <!-- Name -->
           <label class="label-text" for="username">Name</label>
           <input type="text" id="username" name="username" required />
+          <span class="error-message" id="username-error"></span>
           <!-- Email -->
           <label class="label-text" for="email">Email</label>
           <input type="email" id="email" name="email" required />
+          <span class="error-message" id="email-error"></span>
           <!-- Profile Picture -->
           <label class="label-text" for="profile-picture">Profile Picture URL (optional)</label>
           <img id="profile-picture-preview" src="" alt="Profile Picture" />
-          <input type="url" id="profile-picture" name="profile-picture" />
+          <input type="url" id="profile-picture" name="profile-picture" value="" />
+          <span class="error-message" id="profile-picture-error"></span>
           <!-- Bio -->
           <label class="label-text" for="bio">Bio (optional)</label>
           <textarea id="bio" name="bio" rows="4" maxlength="160"></textarea>
-
+          <span class="error-message" id="bio-error"></span>
           <!-- Password -->
           <label class="label-text" for="password">Password</label>
           <input type="password" id="password" name="password" required />
+          <span class="error-message" id="password-error"></span>
           <!-- Register Button -->
           <button type="submit" id="registerbutton">Register</button>
         </form>
