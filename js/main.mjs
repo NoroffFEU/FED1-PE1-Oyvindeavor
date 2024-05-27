@@ -250,7 +250,6 @@ async function initUpdateGridItems() {
 
 function searchPosts() {
   const searchInput = document.getElementById("search-input");
-  const searchButton = document.getElementById("search-button");
 
   // If the user deletes the search input, show the original grid items again
   searchInput.addEventListener("input", async () => {
@@ -267,8 +266,10 @@ function searchPosts() {
     }
 
     const searchValue = searchInput.value;
+    const sort = document.getElementById("sort").value;
+    const filter = document.getElementById("filter").value;
     console.log("searchValue", searchValue);
-    const response = await doFetch(`/blog/posts/oyvind?limit=15`);
+    const response = await doFetch(`/blog/posts/oyvind?limit=15&sordOrder=${sort}&_tag=${filter}`);
     const searchResults = response.data.filter((post) => {
       return post.title.toLowerCase().startsWith(searchValue.toLowerCase());
     });
@@ -277,7 +278,7 @@ function searchPosts() {
   };
 
   // On click do the search
-  searchButton.addEventListener("click", performSearch);
+searchInput.addEventListener("input", performSearch);
 
   // If the user presses enter do the search
   searchInput.addEventListener("keypress", (event) => {
