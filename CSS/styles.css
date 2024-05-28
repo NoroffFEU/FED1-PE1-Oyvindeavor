@@ -673,14 +673,21 @@ label {
   align-items: center;
   padding: 0 10px;
   background-color: transparent;
-  border: solid var(--secondary) 1px;
   border-radius: 4px;
   min-height: 30px;
   margin-right: 10px;
 }
 
+.published-date {
+  margin-right: 10px;
+  color: #ffffff;
+  border: #004d40 1px solid;
+}
+
 .blog-category {
   margin-right: 10px;
+  height: 30px;
+  border: #004d40 1px solid;
 }
 
 .share-buttons {
@@ -811,21 +818,14 @@ label {
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
 /* Container for the login form */
 .login-container {
-  background-color: white;
-  color: black;
+  color: rgb(255, 255, 255);
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  filter: drop-shadow(0 0 0.1rem #61dafb);
+  box-shadow: 0 0 10px var(--secondary);
   width: 400px;
   margin: 0 auto;
   margin-top: 100px;
   padding: 20px;
   font-family: "Prompt", sans-serif;
-}
-
-.login-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 .login-form {
@@ -849,26 +849,6 @@ label {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 10px;
-}
-
-.custom-button {
-  background-color: #082d29be;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-}
-
-.custom-button:hover {
-  background-color: #004d40;
-}
-
-.custom-button:active {
-  background-color: #00251a;
 }
 
 .visually-hidden {
@@ -906,14 +886,13 @@ label {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: var(--secondary);
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px var(--secondary);
   margin-top: 100px;
 }
 
 .register-container h2 {
-  color: #333;
+  color: #ffffff;
   font-size: 24px;
   margin-bottom: 20px;
   text-align: center;
@@ -928,23 +907,22 @@ label {
 .back-to-dashboard {
   text-align: center;
   margin: 20px 0;
-  background-color: var(--section-color);
 }
 
 .back-to-dashboard-link {
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background-color: #007bff;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
   font-size: 1em;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  border: solid white 1px;
 }
 
 .back-to-dashboard-link:hover {
-  background-color: #0056b3;
+  box-shadow: 0 0 10px var(--secondary);
   transform: scale(1.05);
 }
 
@@ -965,11 +943,15 @@ label {
 
 #registerbutton {
   padding: 10px 20px;
-  background-color: #007bff;
   color: white;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
+  border: solid white 1px;
+}
+
+#registerbutton:hover {
+  box-shadow: 0 0 10px var(--secondary);
 }
 
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -1099,7 +1081,6 @@ label {
   margin-bottom: 20px;
 }
 
-
 .image-url {
   display: flex;
   justify-content: space-between;
@@ -1117,21 +1098,23 @@ label {
 .create-blog-post {
   padding: 20px;
   border-radius: 4px;
-  border: 1px solid var(--secondary);
   margin: 0 auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px var(--secondary);
   margin-top: 50px;
-  max-width: 800px;
+  max-width: 700px;
 }
-
 
 #submit {
   padding: 10px 20px;
-  background-color: #007bff;
   color: white;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
+  border: solid white 1px;
+}
+
+#submit:hover {
+  box-shadow: 0 0 10px var(--secondary);
 }
 
 .create-blog-post h1 {
@@ -1493,7 +1476,7 @@ footer .logo-container {
   }
 
   .hero-carousel {
-    height: 500px;
+    margin-bottom: 30px;
   }
 
   .hero-carousel img {
@@ -1580,5 +1563,14 @@ footer .logo-container {
     font-size: 36px;
     letter-spacing: 0px;
     line-height: 44px;
+  }
+
+  .top-section .blog-image {
+    width: 100%;
+    height: 300px;
+  }
+
+  .login-container {
+    width: 300px;
   }
 }
