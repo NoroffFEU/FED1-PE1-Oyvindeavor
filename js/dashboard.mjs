@@ -57,7 +57,6 @@ async function getAllBlogPosts() {
   const searchValue = document.querySelector("#search-input").value.toLowerCase();
   const response = await doFetch(`${apiUrl}/blog/posts/${blogName}?sortOrder=${sort}&_tag=${filter}`);
   if (!response.data || response.data.length === 0) {
-    console.log("No posts available");
     return [];
   }
   return response.data.filter(post =>
