@@ -9,7 +9,7 @@ import { displayAvatar } from "./displayAvatar.mjs";
 function updateUI() {
   if (hasAccessToken()) {
     // Checks to see if the access token is stored (if it is do the following)
-    console.log("Access token is stored");
+
     hideLoginButtonHamburger();
     displayAvatar();
     changeLogInButton();
@@ -18,7 +18,7 @@ function updateUI() {
   } else {
     hideAdminButtonsHamburger();
     // If the access token is not stored (do the following)
-    console.log("No access token stored");
+
 
   }
 }
