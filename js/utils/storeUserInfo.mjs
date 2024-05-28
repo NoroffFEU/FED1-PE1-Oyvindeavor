@@ -14,6 +14,6 @@ export function storeUserName(response) {
   export function storeAvatar(response) {
     const avatar = response.data.avatar.url;
     sessionStorage.setItem("avatar", avatar);
-    console.log("Avatar: ", response.data.avatar.url);
   }
-  
+
+ 
