@@ -41,7 +41,6 @@ function setupEventListeners() {
   addEventListenerCreatePost();
   document.querySelector("#sort").addEventListener("change", updateBlogPosts);
   document.querySelector("#filter").addEventListener("change", updateBlogPosts);
-  document.querySelector("#search-button").addEventListener("click", updateBlogPosts);
   document.querySelector("#search-input").addEventListener("input", updateBlogPosts);
 }
 
@@ -90,11 +89,13 @@ async function createBlogPost(posts) {
     btnContainer.classList.add("btn-container");
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
+    editBtn.classList.add("edit-btn")
     editBtn.addEventListener("click", () => {
       window.location.href = `/post/edit.html?id=${post.id}`;
     });
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete-btn");
     deleteBtn.addEventListener("click", () => deleteBlogPost(post.id, blogPost));
     btnContainer.appendChild(editBtn);
     btnContainer.appendChild(deleteBtn);
