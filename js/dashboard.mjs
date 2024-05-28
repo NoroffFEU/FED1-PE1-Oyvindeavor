@@ -1,7 +1,7 @@
 import { displayAvatar } from "./utils/displayAvatar.mjs";
 import { updateUI } from "./utils/updateUi.mjs";
 import { doFetch } from "./utils/doFetch.mjs";
-import { apiUrl } from "./constants.mjs";
+import { apiUrl, blogName } from "./constants.mjs";
 
 import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
 
@@ -56,7 +56,7 @@ async function getAllBlogPosts() {
   const sort = document.querySelector("#sort").value;
   const filter = document.querySelector("#filter").value;
   const searchValue = document.querySelector("#search-input").value.toLowerCase();
-  const response = await doFetch(`/blog/posts/oyvind?sortOrder=${sort}&_tag=${filter}`);
+  const response = await doFetch(`${apiUrl}/blog/posts/${blogName}?sortOrder=${sort}&_tag=${filter}`);
   if (!response.data || response.data.length === 0) {
     console.log("No posts available");
     return [];
