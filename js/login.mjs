@@ -5,6 +5,7 @@ import { updateUI } from "./utils/updateUi.mjs";
 import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
 import { apiUrl } from "./constants.mjs";
 
+
 document.addEventListener("DOMContentLoaded", () => {
   updateUI();
   hamburgerMenu();
@@ -26,6 +27,8 @@ async function login() {
         "Content-Type": "application/json",
       },
     });
+
+    console.log(response);
 
     // Check if response contains accessToken
     if (response.data && response.data.accessToken) {
@@ -65,6 +68,10 @@ function storeBio(response) {
 
 function storeAvatar(response) {
   const avatar = response.data.avatar.url;
+  const avatarAlt = response.data.avatar.alt;
+  console.log(response.data.avatar.url)
+  console.log("Avatar: Alt", response.data.avatar.alt);
   sessionStorage.setItem("avatar", avatar);
+  sessionStorage.setItem("avatarAlt", avatarAlt);
   console.log("Avatar: ", response.data.avatar.url);
 }
