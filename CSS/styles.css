@@ -266,7 +266,6 @@ header {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
 .carousel-nav {
   position: absolute;
   top: 50%;
@@ -315,7 +314,6 @@ header {
   height: 40px;
   margin-left: 10px;
   margin-top: 5px;
-  
 }
 
 .search-container {
@@ -364,8 +362,6 @@ select {
   border-radius: 4px;
   font-size: 13px;
 }
-
-
 
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃          Grid section/Blog feed           ┃
@@ -1112,7 +1108,8 @@ label {
   box-shadow: 0 0 10px var(--secondary);
 }
 
-#saveChangesBtn, #cancelButton {
+#saveChangesBtn,
+#cancelButton {
   padding: 10px 20px;
   color: white;
   border: solid white 1px;
@@ -1122,7 +1119,8 @@ label {
   transition: background-color 0.3s;
 }
 
-#saveChangesBtn:hover, #cancelButton:hover {
+#saveChangesBtn:hover,
+#cancelButton:hover {
   box-shadow: 0 0 10px var(--secondary);
 }
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -1243,7 +1241,6 @@ footer .logo-container {
   body {
     transition: ease all 0.5s;
   }
-
 
   .headline-text {
     font-size: 28px;
@@ -1583,8 +1580,6 @@ footer .logo-container {
     letter-spacing: 0px;
     line-height: 32px;
   }
-
-
 
   .top-section .blog-image {
     width: 100%;
