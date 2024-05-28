@@ -6,12 +6,13 @@ A simple overview of the use/purpose of the project.
 
 ## Description
 
-Add a more detailed description of what your project entails and set out to do.
+This is a project i was tasked with for my final exam. We were tasked with creating a dynamic blog using an API where the admin can login and create and edit/delete blogposts and create new accounts. 
 
-You can add some bullet points if you'd like to:
 
-- List item 1
-- List item 2
+Some features i added. 
+
+- Sessionstorage instead of localstorage (add description why)
+- Form Validation 
 - List item 3
 
 ## Built With
