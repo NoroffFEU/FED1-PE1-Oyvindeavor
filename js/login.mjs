@@ -3,6 +3,7 @@ import { emailInput, passwordInput } from "./loginForm.mjs";
 import { storeUserName } from "./utils/storeUserName.mjs";
 import { updateUI } from "./utils/updateUi.mjs";
 import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
+import { apiUrl } from "./constants.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   updateUI();
@@ -15,7 +16,7 @@ async function login() {
     const email = emailInput();
     const password = passwordInput();
 
-    const response = await doFetch("/auth/login", {
+    const response = await doFetch(`${apiUrl}/auth/login`, {
       method: "POST",
       body: JSON.stringify({
         email: email,
