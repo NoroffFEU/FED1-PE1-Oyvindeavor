@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   displayBlogPosts(); // Display blog posts on page load
 });
 
-window.onload = function() {
+window.onload = function () {
   // Reset each select element to its first option
-  const selects = document.querySelectorAll('select');
-  selects.forEach(select => {
-      select.selectedIndex = 0;
+  const selects = document.querySelectorAll("select");
+  selects.forEach((select) => {
+    select.selectedIndex = 0;
   });
 };
 
@@ -59,9 +59,7 @@ async function getAllBlogPosts() {
   if (!response.data || response.data.length === 0) {
     return [];
   }
-  return response.data.filter(post =>
-    post.title.toLowerCase().startsWith(searchValue)
-  );
+  return response.data.filter((post) => post.title.toLowerCase().startsWith(searchValue));
 }
 
 async function createBlogPost(posts) {
@@ -76,7 +74,7 @@ async function createBlogPost(posts) {
     return;
   }
   const fragment = document.createDocumentFragment();
-  posts.forEach(post => {
+  posts.forEach((post) => {
     const blogPost = document.createElement("div");
     blogPost.classList.add("blog-post");
     const postTitle = document.createElement("h3");
@@ -88,7 +86,7 @@ async function createBlogPost(posts) {
     btnContainer.classList.add("btn-container");
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
-    editBtn.classList.add("edit-btn")
+    editBtn.classList.add("edit-btn");
     editBtn.addEventListener("click", () => {
       window.location.href = `/post/edit.html?id=${post.id}`;
     });
@@ -133,6 +131,3 @@ async function updateBlogPosts() {
   const posts = await getAllBlogPosts();
   createBlogPost(posts);
 }
-
-
-
