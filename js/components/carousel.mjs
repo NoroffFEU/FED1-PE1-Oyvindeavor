@@ -9,12 +9,10 @@ export function updateCarousel(indexChange) {
   carouselContainer.dataset.currentIndex = currentIndex;
 }
 
-
 export async function handleCarousel() {
   try {
     // Fetch the latest posts
     const blogPosts = await getThreeLatestPosts();
-
 
     // Select carousel elements
     const carouselLinks = document.querySelectorAll(".carousel-item a");
@@ -29,7 +27,7 @@ export async function handleCarousel() {
 
         // Update the image source and alt text
         carouselImages[index].src = post.media.url;
-        carouselImages[index].alt = post.media.alt || 'Blog post image';  // Provide default alt text if none exists
+        carouselImages[index].alt = post.media.alt || "Blog post image"; // Provide default alt text if none exists
 
         // Update the carousel title
         carouselTitles[index].textContent = post.title;
@@ -41,7 +39,7 @@ export async function handleCarousel() {
     // Handle cases where there are fewer posts than carousel elements
     for (let i = blogPosts.length; i < carouselLinks.length; i++) {
       console.error(`No blog post available for carousel element at index ${i}.`);
-      
+
       carouselLinks[i].href = "#";
       if (carouselImages[i]) {
         carouselImages[i].src = "";
@@ -51,7 +49,6 @@ export async function handleCarousel() {
         carouselTitles[i].textContent = "";
       }
     }
-
   } catch (error) {
     console.error("Error updating carousel:", error);
   }
@@ -59,7 +56,6 @@ export async function handleCarousel() {
 
 export function initCarousel() {
   handleCarousel();
-
 }
 
 export function nextSlide() {
