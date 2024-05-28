@@ -1,6 +1,6 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { emailInput, passwordInput } from "./loginForm.mjs";
-import { storeUserName } from "./utils/storeUserName.mjs";
+import { storeUserInfo } from "./utils/storeUserInfo.mjs";
 import { updateUI } from "./utils/updateUi.mjs";
 import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
 import { apiUrl } from "./constants.mjs";
@@ -30,10 +30,7 @@ async function login() {
 
     // Check if response contains accessToken
     if (response.data && response.data.accessToken) {
-      storeAccessToken(response);
-      storeUserName(response);
-      storeBio(response);
-      storeAvatar(response);
+      storeUserInfo(response);
 
       // Redirect to the Dashboard page here!
       window.location.href = "../dashboard/index.html";
@@ -49,23 +46,24 @@ async function login() {
   }
 }
 
+
 export { login };
 
 // This function stores the access token in the session storage
-function storeAccessToken(response) {
-  const accessToken = response.data.accessToken;
-  sessionStorage.setItem("accessToken", accessToken);
-}
+// function storeAccessToken(response) {
+//   const accessToken = response.data.accessToken;
+//   sessionStorage.setItem("accessToken", accessToken);
+// }
 
-function storeBio(response) {
-  const bio = response.data.bio;
-  sessionStorage.setItem("bio", bio);
-}
+// function storeBio(response) {
+//   const bio = response.data.bio;
+//   sessionStorage.setItem("bio", bio);
+// }
 
-function storeAvatar(response) {
-  const avatar = response.data.avatar.url;
-  const avatarAlt = response.data.avatar.alt;
-  sessionStorage.setItem("avatar", avatar);
-  sessionStorage.setItem("avatarAlt", avatarAlt);
+// function storeAvatar(response) {
+//   const avatar = response.data.avatar.url;
+//   const avatarAlt = response.data.avatar.alt;
+//   sessionStorage.setItem("avatar", avatar);
+//   sessionStorage.setItem("avatarAlt", avatarAlt);
 
-}
+// }
