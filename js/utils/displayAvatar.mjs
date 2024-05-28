@@ -9,8 +9,8 @@ function displayAvatar() {
 
   // Check if the avatar URL is not stored; use a default if not
   if (avatar === null) {
-    avatar = "../assets/account_circle_24dp_FILL0_wght100_GRAD200_opsz48.svg"; 
-    avatar.alt = "Default Avatar"; 
+    avatar = "../assets/account_circle_24dp_FILL0_wght100_GRAD200_opsz48.svg";
+    avatar.alt = "Default Avatar";
   }
 
   // Update the image source and alternative text
@@ -21,8 +21,6 @@ function displayAvatar() {
   }
   avatarElementDashboard.src = avatar;
   avatarElementDashboard.alt = alt;
-
 }
-
 
 export { displayAvatar };
