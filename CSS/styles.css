@@ -925,13 +925,12 @@ label {
   height: 24px;
 }
 
-#profile-picture-preview {
+.profile-picture-dashboard {
   width: 100px;
   height: 100px;
+  margin: 0 auto;
+  display: block;
   border-radius: 50%;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  display: none;
 }
 
 #registerbutton {
