@@ -28,8 +28,6 @@ async function login() {
       },
     });
 
-    console.log(response);
-
     // Check if response contains accessToken
     if (response.data && response.data.accessToken) {
       storeAccessToken(response);
@@ -57,21 +55,17 @@ export { login };
 function storeAccessToken(response) {
   const accessToken = response.data.accessToken;
   sessionStorage.setItem("accessToken", accessToken);
-  console.log("Logged in successfully", response.data);
 }
 
 function storeBio(response) {
   const bio = response.data.bio;
   sessionStorage.setItem("bio", bio);
-  console.log("Bio: ", response.data.bio);
 }
 
 function storeAvatar(response) {
   const avatar = response.data.avatar.url;
   const avatarAlt = response.data.avatar.alt;
-  console.log(response.data.avatar.url)
-  console.log("Avatar: Alt", response.data.avatar.alt);
   sessionStorage.setItem("avatar", avatar);
   sessionStorage.setItem("avatarAlt", avatarAlt);
-  console.log("Avatar: ", response.data.avatar.url);
+
 }
