@@ -7,13 +7,8 @@ import { initCarousel } from "./components/carousel.mjs";
 import { setupEventListeners } from "./utils/eventHandlers.mjs";
 
 document.addEventListener("DOMContentLoaded", async () => {
-
-  // Show spinner initially if not already shown
-  document.querySelector(".spinner-container").style.display = "block";
-
   try {
     setupEventListeners();
-    // await updateCarousel();
     initCarousel();
     updateUI();
 
@@ -23,26 +18,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     console.error("Error during initial setup:", error);
   } finally {
-    hideSpinner();
   }
 });
 
 // Quick fix for the select elements not resetting on page reload or revisit
 // Had an issue where the select elements would not reset to their first option and the blogposts would not update accordingly
-window.onload = function() {
+window.onload = function () {
   // Reset each select element to its first option
-  const selects = document.querySelectorAll('select');
-  selects.forEach(select => {
-      select.selectedIndex = 0;
+  const selects = document.querySelectorAll("select");
+  selects.forEach((select) => {
+    select.selectedIndex = 0;
   });
 };
-
-
-function hideSpinner() {
-  document.querySelector(".spinner-container").style.display = "none";
-}
-
-
 
 // Default setup for the grid items on the home page handles slicing based on sort order and filtering
 // So that the carousel items are not repeated in the grid items
@@ -50,17 +37,16 @@ export async function getGridItemsHome() {
   const sort = document.getElementById("sort").value;
   const filter = document.getElementById("filter").value;
 
-
   try {
     const response = await doFetch(`${apiUrl}/blog/posts/${blogName}?sortOrder=${sort}&_tag=${filter}`);
     const page = response.meta.pageCount;
-    
+
     // Check if data is available and proceed accordingly
     if (!response.data || response.data.length === 0) {
       return [];
     }
-    
-    if (sort === "asc" ) {
+
+    if (sort === "asc") {
       // For ascending sort order, slice to get the last 3 posts
       const filterPosts = response.data.slice(0, -3);
       return filterPosts;
@@ -87,9 +73,6 @@ async function initUpdateGridItems() {
   }
 }
 
-
-
-
 export async function getFilteredGridItemsHome() {
   const sort = document.getElementById("sort").value;
   const filter = document.getElementById("filter").value;
@@ -100,7 +83,7 @@ export async function getFilteredGridItemsHome() {
       return await getGridItemsHome();
     }
     const response = await doFetch(`${apiUrl}/blog/posts/${blogName}?limit=15&sortOrder=${sort}&_tag=${filter}`);
-    
+
     // Check if data is available and proceed accordingly
     if (!response.data || response.data.length === 0) {
       return [];
@@ -113,8 +96,3 @@ export async function getFilteredGridItemsHome() {
     return [];
   }
 }
-
-
-
-
-
