@@ -21,8 +21,7 @@ function displayAvatar() {
   }
   avatarElementDashboard.src = avatar;
   avatarElementDashboard.alt = alt;
-  console.log("Avatar displayed", avatarElement.src);
-  console.log("avatar alt text", avatarElement.alt);
+
 }
 
 
