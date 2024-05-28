@@ -44,7 +44,14 @@ async function displayBlogPost() {
       throw new Error("Incomplete data received from the server");
     }
 
+
+    console.log('Image element:', image);
+
+    // Logging to check if data.media.alt exists
+    console.log('Media alt text:', data.media.alt);
+
     image.src = data.media.url;
+    image.alt = data.media.alt;
     title.textContent = data.title;
     content.textContent = data.body;
     authorName.textContent = data.author.name;
