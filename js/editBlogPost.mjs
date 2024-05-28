@@ -1,4 +1,5 @@
 import { doFetch } from "./utils/doFetch.mjs";
+import { apiUrl, blogName } from "./constants.mjs";
 import { fetchIdFromUrl } from "./utils/fetchIdFromUrl.mjs";
 import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
 import { updateUI } from "./utils/updateUi.mjs";
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Fetches the post data from the API using the post ID
 async function fetchDataById(postId) {
   try {
-    const response = await doFetch(`/blog/posts/oyvind/${postId}`);
+    const response = await doFetch(`${apiUrl}/blog/posts/${blogName}/${postId}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching post:", error);
@@ -57,7 +58,7 @@ async function editPost(postId) {
   }
 
   try {
-    const response = await doFetch(`/blog/posts/oyvind/${postId}`, {
+    const response = await doFetch(`${apiUrl}/blog/posts/${blogName}/${postId}`, {
       method: "PUT",
       body: JSON.stringify({
         title: titleInput.value,
