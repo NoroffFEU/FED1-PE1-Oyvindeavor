@@ -1269,6 +1269,7 @@ footer .logo-container {
 
   header {
     height: 100px;
+    position: sticky;
   }
 
   main {
@@ -1297,6 +1298,7 @@ footer .logo-container {
 
   /* Hamburger menu button styles */
   .hamburger-menu-button {
+    position: fixed;
     top: 20px;
     right: 20px;
     cursor: pointer;
@@ -1316,7 +1318,7 @@ footer .logo-container {
 
   /* Side menu styles */
   .side-menu {
-    
+    position: fixed;
     top: 0;
     left: -50%;
     width: 50%;
