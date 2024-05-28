@@ -266,12 +266,6 @@ header {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.carousel-text h1,
-.carousel-text h2 {
-  font-size: 57px;
-  letter-spacing: -0.25px;
-  line-height: 64px;
-}
 
 .carousel-nav {
   position: absolute;
@@ -314,6 +308,14 @@ header {
   background-color: #096e8a;
   border-radius: 8px;
   margin-bottom: 20px;
+}
+
+.search-container img {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 5px;
+  
 }
 
 .search-container {
@@ -363,16 +365,7 @@ select {
   font-size: 13px;
 }
 
-#search-button {
-  padding: 10px 20px;
-  background-color: transparent;
-  border: solid rgb(214, 214, 214) 1px;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  height: 40px;
-  margin-left: 4px;
-}
+
 
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃          Grid section/Blog feed           ┃
@@ -388,7 +381,7 @@ select {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto;
   grid-template-areas:
     "item1 item1 item1 item2 item2 item2"
     "item3 item3 item4 item4 item5 item5"
@@ -1092,6 +1085,34 @@ label {
   margin-right: 10px;
 }
 
+.delete-btn {
+  border: solid white 1px;
+  color: white;
+  width: 100px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: red;
+}
+
+.edit-btn {
+  border: solid white 1px;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 4px;
+  width: 100px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+  box-shadow: 0 0 10px var(--secondary);
+}
+
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃      Create new blog post section         ┃
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
@@ -1211,15 +1232,7 @@ footer .logo-container {
     transition: ease all 0.5s;
   }
 
-  h1,
-  .carousel-text h1 {
-    font-size: 45px;
-    letter-spacing: 0px;
-    line-height: 52px;
-  }
 
-  h2,
-  .carousel-text h2,
   .headline-text {
     font-size: 28px;
     letter-spacing: 0px;
@@ -1559,12 +1572,7 @@ footer .logo-container {
     line-height: 32px;
   }
 
-  .carousel-text h1,
-  .carousel-text h2 {
-    font-size: 36px;
-    letter-spacing: 0px;
-    line-height: 44px;
-  }
+
 
   .top-section .blog-image {
     width: 100%;
