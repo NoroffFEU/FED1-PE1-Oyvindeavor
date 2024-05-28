@@ -16,12 +16,13 @@ async function fetchDataById() {
   try {
     const id = fetchIdFromUrl();
     const response = await doFetch(`${apiUrl}/blog/posts/${blogName}/${id}`);
-    console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error fetching post:", error);
   }
 }
+
+
 
 async function displayBlogPost() {
   try {
@@ -30,7 +31,6 @@ async function displayBlogPost() {
       console.error("No data received to display the blog post.");
       return;
     }
-    console.log(data);
 
     const image = document.querySelector(".blog-image");
     const title = document.querySelector(".article-title");
@@ -45,7 +45,7 @@ async function displayBlogPost() {
     }
 
 
-
+    document.title = data.title;
     image.src = data.media.url;
     image.alt = data.media.alt;
     title.textContent = data.title;
