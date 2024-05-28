@@ -7,9 +7,7 @@ A simple overview of the use/purpose of the project.
 ## Description
 
 This is a project i was tasked with for my final exam. We were tasked with creating a dynamic blog using an API where the admin can login and create and edit/delete blogposts and create new accounts. 
-
-
-Some features i added. 
+ 
 
 
 
