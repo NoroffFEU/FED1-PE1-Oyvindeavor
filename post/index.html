@@ -38,7 +38,6 @@
             </a>
             <!-- Login/Logout button -->
             <a class="login-btn label-text" href="../account/login.html">Login</a>
-            <a class="logout-btn label-text">Log out</a>
           </div>
         </div>
         <!-- Hamburger menu button -->
@@ -52,7 +51,6 @@
       <div class="divider-side-menu"></div>
       <div class="navigation">
         <a href="../index.html">Home</a>
-        <a href="../index.html">Articles</a>
 
         <a id="login-hamburger" href="../account/login.html">Login</a>
         <a id="logout-hamburger" href="../index.html">Logout</a>
@@ -68,17 +66,20 @@
         </a>
       </section>
       <section class="create-blog-post">
-        <h1>Create a new blog post</h1>
+        <h1 class="headline-text">Create a new blog post</h1>
         <form id="createPost" class="flex direction-column align-center" method="POST" enctype="multipart/form-data">
           <!-- Title -->
-          <label class="label-text" for="title">Title</label>
-          <input type="text" id="title" name="title" required placeholder="Title of your blog here" />
+          <label class="label-text flex" for="title">Title </label>
+
+          <input type="text" id="title" name="title" required maxlength="70" />
           <!-- Content -->
           <label class="label-text" for="content">Content</label>
-          <textarea id="content" name="content" rows="12" required></textarea>
+          <textarea id="content" name="content" rows="6" required></textarea>
           <!-- Image -->
+
           <label class="label-text" for="image">Image URL</label>
           <input type="url" id="image" name="image" required />
+
           <!-- Alt text -->
           <label class="label-text" for="alt">Alt text</label>
           <input type="text" id="alt" name="alt" maxlength="100" required />
@@ -93,7 +94,7 @@
             <option value="health">Health</option>
             <option value="lifestyle">Lifestyle</option>
           </select>
-          <button id="submit" type="submit" form="createPost">Create Post</button>
+          <button id="submit" type="submit">Create Post</button>
         </form>
       </section>
     </main>
