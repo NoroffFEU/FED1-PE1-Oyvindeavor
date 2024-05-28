@@ -14,7 +14,7 @@ export async function handleCarousel() {
   try {
     // Fetch the latest posts
     const blogPosts = await getThreeLatestPosts();
-    console.log("Latest blog posts fetched:", blogPosts);
+
 
     // Select carousel elements
     const carouselLinks = document.querySelectorAll(".carousel-item a");
@@ -59,7 +59,7 @@ export async function handleCarousel() {
 
 export function initCarousel() {
   handleCarousel();
-  console.log("initCarousel");
+
 }
 
 export function nextSlide() {
