@@ -45,10 +45,6 @@ async function displayBlogPost() {
     }
 
 
-    console.log('Image element:', image);
-
-    // Logging to check if data.media.alt exists
-    console.log('Media alt text:', data.media.alt);
 
     image.src = data.media.url;
     image.alt = data.media.alt;
