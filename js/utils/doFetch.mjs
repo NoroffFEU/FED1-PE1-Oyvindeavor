@@ -1,9 +1,5 @@
-
-
-async function doFetch(endpoint, options) {
+export async function doFetch(endpoint, options) {
   try {
-
-
     const url = endpoint;
     const response = await fetch(url, options);
 
@@ -13,6 +9,3 @@ async function doFetch(endpoint, options) {
     throw new Error("Error fetching data");
   }
 }
-
-export { doFetch };
-
