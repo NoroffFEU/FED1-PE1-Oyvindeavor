@@ -2,7 +2,7 @@
 import { updateGridItems } from "../utils/domManipulation.mjs";
 import { getFilteredPosts } from "./dataFetching.mjs";
 import { nextSlide, prevSlide } from "../components/carousel.mjs";
-import { searchPosts } from "./search.mjs";
+import { searchPosts } from "../utils/search.mjs";
 
 
 export  function setupEventListeners() {
