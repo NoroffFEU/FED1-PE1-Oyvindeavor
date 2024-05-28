@@ -3,6 +3,7 @@ import { doFetch } from "./utils/doFetch.mjs";
 import { formatDate } from "./utils/formatDate.mjs";
 import { fetchIdFromUrl } from "./utils/fetchIdFromUrl.mjs";
 import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
+import {apiUrl, blogName} from "./constants.mjs";
 
 document.addEventListener("DOMContentLoaded", async () => {
   await displayBlogPost();
@@ -14,7 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function fetchDataById() {
   try {
     const id = fetchIdFromUrl();
-    const response = await doFetch(`/blog/posts/oyvind/${id}`);
+    const response = await doFetch(`${apiUrl}/blog/posts/${blogName}/${id}`);
+    console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error fetching post:", error);
@@ -22,22 +24,19 @@ async function fetchDataById() {
 }
 
 async function displayBlogPost() {
-  let data;
   try {
-    data = await fetchDataById();
+    const data = await fetchDataById();
+    if (!data) {
+      console.error("No data received to display the blog post.");
+      return;
+    }
     console.log(data);
-  } catch (error) {
-    console.error("Error fetching blog post data:", error);
-    return;
-  }
 
-  try {
     const image = document.querySelector(".blog-image");
     const title = document.querySelector(".article-title");
     const content = document.querySelector(".article-description");
     const authorName = document.querySelector(".author-name");
     const authorPicture = document.querySelector(".author-picture");
-    const authorBio = document.querySelector(".author-bio");
     const publishedDate = document.querySelector(".published-date");
     const blogCategory = document.querySelector(".blog-category p");
 
