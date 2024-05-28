@@ -16,6 +16,7 @@ export async function updateGridItems(posts) {
     gridItem.className = "grid-item";
     gridItem.addEventListener("click", () => {
       window.location.href = `/blogpost.html?id=${post.id}`;
+      document.title = post.title;
     });
   
     const image = document.createElement("img");
