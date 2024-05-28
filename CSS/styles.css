@@ -381,7 +381,6 @@ select {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: auto;
   grid-template-areas:
     "item1 item1 item1 item2 item2 item2"
     "item3 item3 item4 item4 item5 item5"
@@ -451,6 +450,7 @@ select {
   transition: ease all 0.5s;
   min-height: 300px;
   justify-content: space-around;
+  cursor: pointer;
 }
 
 .grid-item:hover {
@@ -1113,6 +1113,19 @@ label {
   box-shadow: 0 0 10px var(--secondary);
 }
 
+#saveChangesBtn, #cancelButton {
+  padding: 10px 20px;
+  color: white;
+  border: solid white 1px;
+  width: 150px;
+
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#saveChangesBtn:hover, #cancelButton:hover {
+  box-shadow: 0 0 10px var(--secondary);
+}
 /*┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃      Create new blog post section         ┃
   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛*/
