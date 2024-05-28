@@ -54,11 +54,9 @@ export async function getGridItemsHome() {
   try {
     const response = await doFetch(`${apiUrl}/blog/posts/${blogName}?sortOrder=${sort}&_tag=${filter}`);
     const page = response.meta.pageCount;
-    console.log("Pages: ", page);
     
     // Check if data is available and proceed accordingly
     if (!response.data || response.data.length === 0) {
-      console.log("No posts available");
       return [];
     }
     
@@ -72,7 +70,6 @@ export async function getGridItemsHome() {
       return filterPosts;
     } else {
       // In case sort order is neither 'asc' nor 'desc', return all posts or handle as needed
-      console.log("Unrecognized sort order: ", sort);
       return response.data;
     }
   } catch (error) {
@@ -106,7 +103,6 @@ export async function getFilteredGridItemsHome() {
     
     // Check if data is available and proceed accordingly
     if (!response.data || response.data.length === 0) {
-      console.log("No posts available");
       return [];
     }
 
@@ -118,63 +114,6 @@ export async function getFilteredGridItemsHome() {
   }
 }
 
-// function filterEventListeners() {
-//   const sortSelect = document.getElementById("sort");
-//   sortSelect.addEventListener("change", async () => {
-//     const posts = await getFilteredGridItemsHome();
-//     updateGridItems(posts); 
-//   });
-
-//   const filterSelect = document.getElementById("filter");
-//   filterSelect.addEventListener("change", async () => {
-//     const posts = await getFilteredGridItemsHome();
-//     updateGridItems(posts);  
-//   });
-// }
-
-// filterEventListeners();
-
-
-
-// function searchPosts() {
-//   const searchInput = document.getElementById("search-input");
-
-//   // If the user deletes the search input, show the original grid items again
-//   searchInput.addEventListener("input", async () => {
-//     if (searchInput.value === "") {
-//       const startPageGrid = await getGridItemsHome();
-//       updateGridItems(startPageGrid);
-//     }
-//   });
-
-//   const performSearch = async () => {
-//     // If the user clicks search with no value do nothing
-//     if (searchInput.value === "") {
-//       return;
-//     }
-
-//     const searchValue = searchInput.value;
-//     const sort = document.getElementById("sort").value;
-//     const filter = document.getElementById("filter").value;
-//     console.log("searchValue", searchValue);
-//     const response = await doFetch(`${apiUrl}/blog/posts/${blogName}?limit=15&sortOrder=${sort}&_tag=${filter}`);
-//     const searchResults = response.data.filter((post) => {
-//       return post.title.toLowerCase().startsWith(searchValue.toLowerCase());
-//     });
-//     console.log(response);
-//     updateGridItems(searchResults);
-//   };
-
-//   // On click do the search
-// searchInput.addEventListener("input", performSearch);
-
-//   // If the user presses enter do the search
-//   searchInput.addEventListener("keypress", (event) => {
-//     if (event.key === "Enter") {
-//       performSearch();
-//     }
-//   });
-// }
 
 
 
