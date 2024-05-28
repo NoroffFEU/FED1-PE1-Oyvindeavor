@@ -52,7 +52,7 @@ export async function getGridItemsHome() {
 
 
   try {
-    const response = await doFetch(`${apiUrl}/blog/posts/${blogName}?limit=15&sortOrder=${sort}&_tag=${filter}`);
+    const response = await doFetch(`${apiUrl}/blog/posts/${blogName}?sortOrder=${sort}&_tag=${filter}`);
     const page = response.meta.pageCount;
     console.log("Pages: ", page);
     
