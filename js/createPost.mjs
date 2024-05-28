@@ -1,15 +1,12 @@
-import { doFetch } from "./utils/doFetch.mjs";
+// Dependencies: updateUi.mjs, constants.mjs, hamburgerMenu.mjs
 import { updateUI } from "./utils/updateUi.mjs";
-import { apiUrl } from "./constants.mjs";
+import { apiUrl, blogName } from "./constants.mjs";
 import { hamburgerMenu } from "./components/hamburgerMenu.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   updateUI();
   hamburgerMenu();
 });
-
-
-
 
 async function createPost() {
   const titleInput = document.getElementById("title");
@@ -20,7 +17,7 @@ async function createPost() {
   const categoryInput = document.getElementById("category");
 
   submitButton.addEventListener("click", async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     if (!titleInput.checkValidity() || !contentInput.checkValidity() || !imageInput.checkValidity() || !altInput.checkValidity() || !categoryInput.checkValidity()) {
       categoryInput.reportValidity();
@@ -29,11 +26,11 @@ async function createPost() {
       imageInput.reportValidity();
       contentInput.reportValidity();
       titleInput.reportValidity();
-      return; 
+      return;
     }
 
     try {
-      const response = await fetch(`${apiUrl}/blog/posts/oyvind`, {
+      const response = await fetch(`${apiUrl}/blog/posts/${blogName}`, {
         method: "POST",
         body: JSON.stringify({
           title: titleInput.value,
@@ -64,8 +61,5 @@ async function createPost() {
     }
   });
 }
-
-
-
 
 createPost();
