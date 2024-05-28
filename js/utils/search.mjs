@@ -23,12 +23,12 @@ export async function searchPosts() {
       const searchValue = searchInput.value;
       const sort = document.getElementById("sort").value;
       const filter = document.getElementById("filter").value;
-      console.log("searchValue", searchValue);
+
       const response = await doFetch(`${apiUrl}/blog/posts/${blogName}?limit=15&sortOrder=${sort}&_tag=${filter}`);
       const searchResults = response.data.filter((post) => {
         return post.title.toLowerCase().startsWith(searchValue.toLowerCase());
       });
-      console.log(response);
+
       updateGridItems(searchResults);
     };
   
