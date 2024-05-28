@@ -18,34 +18,34 @@ export async function updateGridItems(posts) {
       window.location.href = `/blogpost.html?id=${post.id}`;
       document.title = post.title;
     });
-  
+
     const image = document.createElement("img");
     image.src = post.media.url;
     image.alt = post.media.alt;
     image.loading = "lazy";
-  
+
     const gridText = document.createElement("div");
     gridText.className = "grid-text";
-  
+
     const title = document.createElement("h2");
     title.classList.add("title-text");
     title.textContent = post.title;
-  
+
     const publishedDate = document.createElement("span");
     publishedDate.className = "label-text";
     publishedDate.textContent = `Published: ${formatDate(post.created)}`;
-  
+
     const category = document.createElement("span");
     category.className = "label-text";
     category.textContent = `${post.tags[0]}`;
-  
+
     gridText.appendChild(publishedDate);
     gridText.appendChild(category);
     gridText.appendChild(title);
-  
+
     gridItem.appendChild(image);
     gridItem.appendChild(gridText);
-  
+
     container.appendChild(gridItem);
   });
 }
