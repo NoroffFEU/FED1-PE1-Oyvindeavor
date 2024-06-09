@@ -6,13 +6,12 @@
 ## Description
 
 This is a project i was tasked with for my final exam. We were tasked with creating a dynamic blog using an API where the admin can login and create and edit/delete blogposts and create new accounts. 
- 
+This project uses sessionStorage so the user will always be logged out if they close the browser regardless if they havent logged out or not. There is a great deal of work put into user feedback, preventing errors from the api.
+I created a "dashboard" so they can filter and search through the posts, edit and delete. 
 
 
 
 ## Built With
-
-You can list a the tech stack that you've used over here
 
 - [HTML]
 - [CSS]
